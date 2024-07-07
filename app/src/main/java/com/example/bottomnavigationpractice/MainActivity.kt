@@ -44,65 +44,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BottomNavigationPracticeTheme {
-                val items = listOf(
-                    BottomNavigationItem(
-                        title = "Home",
-                        selectedIcon = Icons.Filled.Home,
-                        unselectedIcon = Icons.Outlined.Home,
-                        hasNews =  false,
-                    ),
-                    BottomNavigationItem(
-                        title = "Chat",
-                        selectedIcon = Icons.Filled.Email,
-                        unselectedIcon = Icons.Outlined.Email,
-                        hasNews =  false,
-                    ),
-                    BottomNavigationItem(
-                        title = "Settings",
-                        selectedIcon = Icons.Filled.Settings,
-                        unselectedIcon = Icons.Outlined.Settings,
-                        hasNews =  false,
-                    ),
-                )
-                var selectedItemIndex by rememberSaveable{
-                    mutableStateOf(0)
-                }
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    Scaffold(
-                        bottomBar = {
-                            NavigationBar {
-                                items.forEachIndexed { index, item ->
-                                    NavigationBarItem(
-                                        selected = selectedItemIndex == index,
-                                        onClick = {
-                                            selectedItemIndex = index
-                                            // navController.navigate(item.title)
-                                                  },
-                                        label = {
-                                            Text(text = item.title)
-                                        },
-                                        icon = {
-                                            Icon(
-                                                imageVector = if(index == selectedItemIndex){
-                                                    item.selectedIcon
-                                                }else item.unselectedIcon,
-                                                contentDescription = item.title
-                                            )
-                                        }
-
-                                    )
-
-                                }
-                            }
-                        }
-
-                    ) {
-                        innerPadding -> Modifier.padding(innerPadding)
-                    }
+                    WorkoutApp()
                 }
             }
         }
