@@ -5,9 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.bottomnavigationpractice.screens.ChatScreen
-import com.example.bottomnavigationpractice.screens.HomeScreen
-import com.example.bottomnavigationpractice.screens.SettingsScreen
+import com.example.bottomnavigationpractice.screens.FaceScreen
+import com.example.bottomnavigationpractice.screens.AboutScreen
+import com.example.bottomnavigationpractice.screens.WorkoutScreen
 
 
 @Composable
@@ -17,17 +17,17 @@ fun WorkOutNavHost(
     ){
     NavHost(
         navController = navController,
-        startDestination = "Home",
+        startDestination = "Workout",
         modifier = modifier
     ){
-        composable(route = "Home"){
-            HomeScreen()
+        composable(route = "Workout"){
+            WorkoutScreen()
         }
-        composable(route = "Settings"){
-            SettingsScreen()
+        composable(route = "About"){
+            AboutScreen()
         }
-        composable(route = "Chat"){
-            ChatScreen()
+        composable(route = "Cal. Calc"){
+            FaceScreen()
         }
     }
 
