@@ -1,18 +1,13 @@
 package com.example.bottomnavigationpractice.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Email
-import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -31,21 +26,21 @@ import com.example.bottomnavigationpractice.BottomNavigationItem
 fun BottomNavBar(navController: NavController) {
     val items = listOf( //Bottom navigation bar items
         BottomNavigationItem(
-            title = "Workout",
-            selectedIcon = Icons.Filled.Check,
-            unselectedIcon = Icons.Outlined.Check,
+            title = "Home",
+            selectedIcon = Icons.Filled.Home,
+            unselectedIcon = Icons.Outlined.Home,
             hasNews =  false,
         ),
         BottomNavigationItem(
-            title = "Cal. Calc",
-            selectedIcon = Icons.Filled.Face,
-            unselectedIcon = Icons.Outlined.Face,
+            title = "Profile",
+            selectedIcon = Icons.Filled.Person,
+            unselectedIcon = Icons.Outlined.Person,
             hasNews =  false,
         ),
         BottomNavigationItem(
-            title = "About",
-            selectedIcon = Icons.Filled.Info,
-            unselectedIcon = Icons.Outlined.Info,
+            title = "Settings",
+            selectedIcon = Icons.Filled.Settings,
+            unselectedIcon = Icons.Outlined.Settings,
             hasNews =  false,
         ),
     )
