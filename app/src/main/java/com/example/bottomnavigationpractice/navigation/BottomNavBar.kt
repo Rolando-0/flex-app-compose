@@ -3,9 +3,11 @@ package com.example.bottomnavigationpractice.navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -30,9 +32,9 @@ fun BottomNavBar(navController: NavController) {
             hasNews =  false,
         ),
         BottomNavigationItem(
-            title = "Chat",
-            selectedIcon = Icons.Filled.Email,
-            unselectedIcon = Icons.Outlined.Email,
+            title = "Profile",
+            selectedIcon = Icons.Filled.Person,
+            unselectedIcon = Icons.Outlined.Person,
             hasNews =  false,
         ),
         BottomNavigationItem(
