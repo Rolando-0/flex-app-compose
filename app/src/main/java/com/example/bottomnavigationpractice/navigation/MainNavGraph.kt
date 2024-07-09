@@ -5,9 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.bottomnavigationpractice.screens.HomeScreen
-import com.example.bottomnavigationpractice.screens.ProfileScreen
-import com.example.bottomnavigationpractice.screens.SettingsScreen
+import com.example.bottomnavigationpractice.screens.WorkoutScreen
+import com.example.bottomnavigationpractice.screens.FaceScreen
+import com.example.bottomnavigationpractice.screens.AboutScreen
 
 
 @Composable
@@ -17,16 +17,16 @@ fun WorkOutNavHost(
     ){
     NavHost(
         navController = navController,
-        startDestination = "Home",
+        startDestination = "Workout",
     ){
-        composable(route = "Home"){
-            HomeScreen()
+        composable(route = "Workout"){
+            WorkoutScreen()
         }
-        composable(route = "Settings"){
-            SettingsScreen()
+        composable(route = "Cal. Calc"){
+            FaceScreen()
         }
-        composable(route = "Profile"){
-            ProfileScreen()
+        composable(route = "About"){
+            AboutScreen()
         }
     }
 
