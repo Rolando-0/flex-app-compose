@@ -76,6 +76,7 @@ fun CalcContent(innerPadding: PaddingValues) {
         BasicTextField(
             value = weight,
             onValueChange = { weight = it },
+            singleLine = true,
             decorationBox = { innerTextField ->
                 Row(
                     Modifier
@@ -99,6 +100,7 @@ fun CalcContent(innerPadding: PaddingValues) {
         BasicTextField(
             value = height,
             onValueChange = { height = it },
+            singleLine = true,
             decorationBox = { innerTextField ->
                 Row(
                     Modifier
@@ -121,6 +123,7 @@ fun CalcContent(innerPadding: PaddingValues) {
 
         BasicTextField(
             value = age,
+            singleLine = true,
             onValueChange = { age = it },
             decorationBox = { innerTextField ->
                 Row(

@@ -2,18 +2,11 @@ package com.example.bottomnavigationpractice.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material.icons.outlined.Done
-import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Face
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -37,7 +30,7 @@ fun BottomNavBar(navController: NavController) {
             hasNews =  false,
         ),
         BottomNavigationItem(
-            title = "Cal. Calc",
+            title = "Calc",
             selectedIcon = Icons.Filled.Face,
             unselectedIcon = Icons.Outlined.Face,
             hasNews =  false,
@@ -58,7 +51,12 @@ fun BottomNavBar(navController: NavController) {
                 selected = selectedItemIndex == index,
                 onClick = {
                     selectedItemIndex = index
-                    navController.navigate(item.title)
+                    when(item.title){
+                        "Workout" -> navController.navigate(RoutinesRoute)
+                        "Calc" -> navController.navigate(CalcRoute)
+                        "About" -> navController.navigate(AboutRoute)
+                    }
+
                 },
                 label = {
                     Text(text = item.title)
