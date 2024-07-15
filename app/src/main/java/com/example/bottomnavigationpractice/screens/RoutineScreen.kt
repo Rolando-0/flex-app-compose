@@ -27,8 +27,6 @@ import com.example.bottomnavigationpractice.screens.viewmodels.RoutinesViewModel
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.bottomnavigationpractice.R
 import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
@@ -37,7 +35,7 @@ import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeThe
 @Composable
 fun RoutinesScreen(
     navigateToRoutineEntry: () -> Unit,
-    navigateToRoutineDetails: (Long) -> Unit,
+    navigateToRoutineDetails: (Long,String,String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: RoutinesViewModel = viewModel(factory = AppViewModelProvider.Factory)
 
@@ -58,7 +56,7 @@ fun RoutinesScreen(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_logo ),
                         contentDescription = null,
-                        modifier = Modifier.size(24.dp) // Adjust the size as needed
+                        modifier = Modifier.size(36.dp) // Adjust the size as needed
                     )
                 }
             )
@@ -76,9 +74,11 @@ fun RoutinesScreen(
             }
         },
     ) {innerPadding ->
-        RoutinesBody(routineList = routineUiState.routineList,
+        RoutinesBody(
+            routineList = routineUiState.routineList,
             onRoutineClick = navigateToRoutineDetails,
-            contentPadding = innerPadding
+            contentPadding = innerPadding,
+            modifier = Modifier.padding(16.dp)
         )
 
 
@@ -91,7 +91,7 @@ fun RoutinesScreen(
 @Composable
 private fun RoutinesBody(
     routineList: List<Routine>,
-    onRoutineClick: (Long) -> Unit,
+    onRoutineClick: (Long, String, String) -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -107,7 +107,7 @@ private fun RoutinesBody(
         } else {
             RoutineList(
                 routineList = routineList,
-                onRoutineClick = { onRoutineClick(it.routineId) },
+                onRoutineClick = onRoutineClick,
                 contentPadding = contentPadding,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
@@ -119,7 +119,7 @@ private fun RoutinesBody(
 @Composable
 private fun RoutineList(
     routineList: List<Routine>,
-    onRoutineClick: (Routine) -> Unit,
+    onRoutineClick: (Long,String,String) -> Unit,
     contentPadding: PaddingValues,
     modifier: Modifier
 ){
@@ -131,20 +131,22 @@ private fun RoutineList(
         items(items = routineList, key = {it.routineId}){ routine ->
             RoutineItem(
                 routine = routine,
-                modifier = Modifier
-                    .padding(8.dp)
-                    .clickable { onRoutineClick(routine) }
+                onRoutineClick = onRoutineClick
             )
+
         }
     }
 }
 
 @Composable
 private fun RoutineItem(
-    routine: Routine, modifier: Modifier = Modifier
+    routine: Routine, modifier: Modifier = Modifier, onRoutineClick: (Long,String,String) -> Unit
 ){
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp)
+            .clickable { onRoutineClick(routine.routineId,routine.name,routine.desc) },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ){
         Column(
@@ -177,6 +179,6 @@ fun RoutinesBodyPreview(){
             Routine(3,"Wednesday","Legs"),
             Routine(4,"Thursday","Upper Body"),
             )
-            ,onRoutineClick = {})
+            , onRoutineClick = {id,name,desc -> {} })
     }
 }

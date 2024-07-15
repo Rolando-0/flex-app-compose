@@ -16,7 +16,7 @@ class RoutineEntryViewModel (
 
         fun updateRoutineEntryState(routineDetails: RoutineDetails){
             routineEntryUiState = RoutineEntryUiState(
-                routineDetails = RoutineDetails(),
+                routineDetails = routineDetails,
                 isEntryValid = validateInput(routineDetails)
             )
         }

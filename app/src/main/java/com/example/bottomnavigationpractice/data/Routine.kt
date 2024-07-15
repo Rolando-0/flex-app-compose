@@ -2,8 +2,9 @@ package com.example.bottomnavigationpractice.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 @Entity
 data class Routine(
     @PrimaryKey(autoGenerate = true) val routineId: Long = 0,

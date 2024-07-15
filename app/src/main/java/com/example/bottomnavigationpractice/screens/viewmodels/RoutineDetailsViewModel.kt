@@ -19,6 +19,7 @@ class RoutineDetailsViewModel(
     savedStateHandle: SavedStateHandle,
     private val routineRepository: RoutineRepository
 ): ViewModel() {
+
     private val routineId = savedStateHandle.toRoute<RoutineDetailsRoute>().routineId
 
     val routineDetailsUiState: StateFlow<RoutineDetailsUiState> =

@@ -71,6 +71,9 @@ dependencies {
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
 
+    //coil, used for previewing youtube thumbnails for exercises
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
     //room
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")

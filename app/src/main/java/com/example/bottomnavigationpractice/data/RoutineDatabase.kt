@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Routine::class,Exercise::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class RoutineDatabase:RoomDatabase(){
@@ -24,7 +24,9 @@ abstract class RoutineDatabase:RoomDatabase(){
                     context,
                     RoutineDatabase::class.java,
                     "routine_db"
-                ).build().also{Instance = it}
+                )  .fallbackToDestructiveMigration()
+                    .build()
+                    .also{Instance = it}
 
             }
         }

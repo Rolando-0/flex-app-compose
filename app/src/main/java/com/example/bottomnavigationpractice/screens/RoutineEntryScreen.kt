@@ -36,7 +36,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RoutineEntryScreen(
-    navigateUp: () -> Unit,
+    navigateBack: () -> Unit,
     viewModel: RoutineEntryViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -45,7 +45,7 @@ fun RoutineEntryScreen(
             GoBackTopAppBar(
                 title = "Add New Routine",
                 canNavigateBack = true,
-                navigateUp = navigateUp
+                navigateUp = navigateBack
             )
         }
         ){innerPadding ->
@@ -55,7 +55,7 @@ fun RoutineEntryScreen(
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.saveRoutine()
-                    navigateUp()
+                    navigateBack()
                 }
             },
             modifier = Modifier
