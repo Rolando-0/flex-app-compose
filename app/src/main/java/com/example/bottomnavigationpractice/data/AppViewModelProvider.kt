@@ -46,6 +46,5 @@ object AppViewModelProvider {
     }
 }
 
-//test
 fun CreationExtras.routineApplication(): RoutineApplication =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as RoutineApplication)
