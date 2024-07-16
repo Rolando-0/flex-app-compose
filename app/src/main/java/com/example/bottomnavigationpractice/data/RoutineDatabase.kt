@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Routine::class,Exercise::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class RoutineDatabase:RoomDatabase(){

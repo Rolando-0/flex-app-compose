@@ -35,7 +35,8 @@ data class ExerciseEntryRoute(
 )
 @Serializable
 data class ExerciseRoute(
-    val exerciseId: Long
+    val exerciseId: Long,
+    val routineId: Long
 )
 
 @Serializable
@@ -78,7 +79,7 @@ fun WorkOutNavHost(
                routineDesc = args.routineDesc,
                navigateBack = {navController.navigateUp()},
                navigateToExerciseEntry = { navController.navigate(ExerciseEntryRoute(routineId = args.routineId))},
-               navigateToExercise = {exerciseId -> navController.navigate(ExerciseRoute(exerciseId))}
+               navigateToExercise = {exerciseId -> navController.navigate(ExerciseRoute(exerciseId, routineId = args.routineId))}
            )
         }
         composable<ExerciseEntryRoute>{
@@ -91,7 +92,10 @@ fun WorkOutNavHost(
         }
         composable<ExerciseRoute> {
             val args =  it.toRoute<ExerciseRoute>()
-            ExerciseScreen()
+            ExerciseScreen(
+                exerciseId = args.exerciseId,
+                navigateBack = {navController.navigateUp()}
+            )
         }
         composable<AboutRoute>{
             AboutScreen()

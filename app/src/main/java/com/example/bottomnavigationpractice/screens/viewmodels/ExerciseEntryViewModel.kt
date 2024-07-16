@@ -68,9 +68,7 @@ fun Exercise.toExerciseEntryUiState(isEntryValid: Boolean = false): ExerciseEntr
     isEntryValid = isEntryValid
 )
 
-/**
- * Extension function to convert [Item] to [ItemDetails]
- */
+
 fun Exercise.toExerciseDetails(): ExerciseDetails = ExerciseDetails(
     name = name,
     reps = reps,

@@ -25,6 +25,8 @@ import com.example.bottomnavigationpractice.data.AppViewModelProvider
 import com.example.bottomnavigationpractice.data.Routine
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutinesViewModel
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.ui.tooling.preview.Preview
@@ -78,7 +80,9 @@ fun RoutinesScreen(
             routineList = routineUiState.routineList,
             onRoutineClick = navigateToRoutineDetails,
             contentPadding = innerPadding,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .padding(16.dp)
+
         )
 
 
@@ -97,7 +101,7 @@ private fun RoutinesBody(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier,
+        modifier = modifier
     ) {
         if (routineList.isEmpty()) {
             Text(
@@ -146,7 +150,7 @@ private fun RoutineItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp)
-            .clickable { onRoutineClick(routine.routineId,routine.name,routine.desc) },
+            .clickable { onRoutineClick(routine.routineId, routine.name, routine.desc) },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ){
         Column(

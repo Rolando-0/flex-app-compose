@@ -24,6 +24,8 @@ class RoutineRepository (
         }
 
     }
+    fun getExerciseById(exerciseId: Long): Flow<Exercise> =
+        routineDao.getExerciseById(exerciseId)
 
     suspend fun deleteRoutine(routine: Routine){
         routineDao.deleteRoutine(routine)
@@ -31,6 +33,10 @@ class RoutineRepository (
 
     suspend fun deleteExercise(exercise: Exercise){
         routineDao.deleteExercise(exercise)
+    }
+
+    suspend fun deleteExerciseById(exerciseId: Long){
+        routineDao.deleteExerciseById(exerciseId)
     }
 
 

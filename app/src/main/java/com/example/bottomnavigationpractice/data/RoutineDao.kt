@@ -23,9 +23,14 @@ interface RoutineDao {
     @Query("SELECT * From Routine WHERE routineId = :routineId")
     fun getRoutineById(routineId: Long): Flow<Routine?>
 
+    @Query("SELECT * FROM Exercise WHERE exerciseId = :exerciseId")
+    fun getExerciseById(exerciseId: Long): Flow<Exercise>
     @Delete
     suspend fun deleteRoutine(routine: Routine)
 
     @Delete
     suspend fun deleteExercise(exercise: Exercise)
+
+    @Query("DELETE FROM Exercise WHERE exerciseId = :exerciseId")
+    suspend fun deleteExerciseById(exerciseId: Long)
 }
