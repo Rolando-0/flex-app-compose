@@ -84,6 +84,7 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         BasicTextField(
+            singleLine = true,
             value = weight,
             onValueChange = { weight = it },
             decorationBox = { innerTextField ->
@@ -107,6 +108,7 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicTextField(
+            singleLine = true,
             value = reps,
             onValueChange = { reps = it },
             decorationBox = { innerTextField ->
@@ -185,6 +187,7 @@ fun CalcContent(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicTextField(
+            singleLine = true,
             value = weight,
             onValueChange = { weight = it },
             decorationBox = { innerTextField ->
@@ -208,6 +211,7 @@ fun CalcContent(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicTextField(
+            singleLine = true,
             value = height,
             onValueChange = { height = it },
             decorationBox = { innerTextField ->
@@ -231,6 +235,7 @@ fun CalcContent(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicTextField(
+            singleLine = true,
             value = age,
             onValueChange = { age = it },
             decorationBox = { innerTextField ->
