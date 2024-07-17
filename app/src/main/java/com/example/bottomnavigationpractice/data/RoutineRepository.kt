@@ -16,6 +16,9 @@ class RoutineRepository (
     suspend fun insertRoutine(routine: Routine) =
         routineDao.insertRoutine(routine)
 
+    suspend fun updateRoutine(routineId: Long, routineName: String, routineDesc: String) =
+        routineDao.updateRoutine(routineId, routineName, routineDesc)
+
 
     suspend fun insertExercise(exercise: Exercise, routineId: Long){
         val routine = routineDao.getRoutineById(routineId)
@@ -33,6 +36,10 @@ class RoutineRepository (
 
     suspend fun deleteExercise(exercise: Exercise){
         routineDao.deleteExercise(exercise)
+    }
+
+    suspend fun deleteRoutineById(routineId: Long){
+        routineDao.deleteRoutineById(routineId)
     }
 
     suspend fun deleteExerciseById(exerciseId: Long){

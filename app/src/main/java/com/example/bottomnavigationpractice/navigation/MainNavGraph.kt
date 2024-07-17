@@ -11,6 +11,7 @@ import com.example.bottomnavigationpractice.screens.AboutScreen
 import com.example.bottomnavigationpractice.screens.ExerciseEntryScreen
 import com.example.bottomnavigationpractice.screens.ExerciseScreen
 import com.example.bottomnavigationpractice.screens.RoutineDetailsScreen
+import com.example.bottomnavigationpractice.screens.RoutineEditScreen
 import com.example.bottomnavigationpractice.screens.RoutineEntryScreen
 import com.example.bottomnavigationpractice.screens.RoutinesScreen
 import kotlinx.serialization.Serializable
@@ -28,7 +29,11 @@ data class RoutineDetailsRoute(
    val routineDesc: String
 
 )
-
+@Serializable
+data class RoutineEditRoute(
+    val routineId: Long,
+    val routineName: String
+)
 @Serializable
 data class ExerciseEntryRoute(
     val routineId: Long
@@ -79,8 +84,17 @@ fun WorkOutNavHost(
                routineDesc = args.routineDesc,
                navigateBack = {navController.navigateUp()},
                navigateToExerciseEntry = { navController.navigate(ExerciseEntryRoute(routineId = args.routineId))},
-               navigateToExercise = {exerciseId -> navController.navigate(ExerciseRoute(exerciseId, routineId = args.routineId))}
+               navigateToExercise = {exerciseId -> navController.navigate(ExerciseRoute(exerciseId, routineId = args.routineId))},
+               navigateToEditRoutine = {navController.navigate(RoutineEditRoute(args.routineId,args.routineName))}
            )
+        }
+        composable<RoutineEditRoute>{
+            val args = it.toRoute<RoutineEditRoute>()
+            RoutineEditScreen(
+                args.routineId,
+                args.routineName,
+                navigateBack = {navController.navigateUp()}
+            )
         }
         composable<ExerciseEntryRoute>{
             val args = it.toRoute<ExerciseEntryRoute>()

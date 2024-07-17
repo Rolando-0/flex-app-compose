@@ -59,28 +59,30 @@ fun ExerciseScreen(
     Scaffold(
         topBar = { GoBackTopAppBar(title = "", canNavigateBack = true, navigateUp = navigateBack) }
     ){innerPadding ->
-        ExerciseBody(
-            innerPadding,
-            viewModel.exerciseUiState,
-            onValueChange = viewModel::updateExerciseUiState,
-            onSaveClick = {
-                coroutineScope.launch{
-                    viewModel.updateExercise()
+        Column(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            ExerciseBody(
+                viewModel.exerciseUiState,
+                onValueChange = viewModel::updateExerciseUiState,
+                onSaveClick = {
+                    coroutineScope.launch {
+                        viewModel.updateExercise()
+                    }
+                },
+                onDeleteClick = {
+                    coroutineScope.launch {
+                        viewModel.deleteExercise()
+                        navigateBack()
+                    }
                 }
-            },
-            onDeleteClick = {
-                coroutineScope.launch{
-                    viewModel.deleteExercise()
-                    navigateBack()
-                }
-            }
-        )
+            )
+        }
 
     }
 }
 @Composable
 fun ExerciseBody(
-    innerPaddingValues: PaddingValues,
     exerciseUiState: ExerciseUiState,
     onValueChange: (ExerciseDetails) -> Unit,
     onSaveClick: () -> Unit,
@@ -164,7 +166,7 @@ fun ViewExercise(
     ) {
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.padding(top = 80.dp)
+            modifier = Modifier.padding(top = 40.dp)
         ) {
 
             YoutubePlayer(
@@ -180,7 +182,7 @@ fun ViewExercise(
         ){
             Text(text = exerciseDetails.name, fontSize = 30.sp)
 
-            Text(text = "${exerciseDetails.sets} x ${exerciseDetails.reps}", fontSize = 24.sp)
+            Text(text = "${exerciseDetails.sets} Sets x ${exerciseDetails.reps}", fontSize = 24.sp)
         }
 
 

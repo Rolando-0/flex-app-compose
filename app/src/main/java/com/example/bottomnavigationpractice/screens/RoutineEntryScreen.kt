@@ -75,7 +75,7 @@ fun RoutineEntryBody(
     routineEntryUiState: RoutineEntryUiState,
     onFieldValueChange: (RoutineDetails) -> Unit,
     onSaveClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier
 
 ){
     Column(
@@ -145,10 +145,16 @@ fun RoutineEntryForm(
 @Composable
 private fun ItemEntryScreenPreview() {
     BottomNavigationPracticeTheme {
-        RoutineEntryBody(routineEntryUiState = RoutineEntryUiState(
-            RoutineDetails(
+        RoutineEntryBody(
+            routineEntryUiState =
+            RoutineEntryUiState(
+                RoutineDetails(
                 name = "Monday", desc = "Leg day, lower body"
             )
-        ), onFieldValueChange = {}, onSaveClick = {})
+        ),
+            onFieldValueChange = {},
+            onSaveClick = {},
+            modifier = Modifier
+        )
     }
 }

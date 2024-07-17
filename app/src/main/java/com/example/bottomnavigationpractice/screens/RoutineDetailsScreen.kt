@@ -17,6 +17,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,6 +56,7 @@ fun RoutineDetailsScreen(
     navigateBack: () -> Unit,
     navigateToExerciseEntry: (Long) -> Unit,
     navigateToExercise: (Long) -> Unit,
+    navigateToEditRoutine: () -> Unit,
     viewModel: RoutineDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ){
     val routineDetailsUiState by viewModel.routineDetailsUiState.collectAsState()
@@ -75,18 +78,32 @@ fun RoutineDetailsScreen(
 
 
     ){innerPadding ->
-        ExercisesBody(
-            exerciseList = routineDetailsUiState.exercises,
-            onExerciseClick = navigateToExercise,
-            contentPadding = innerPadding,
-            modifier = Modifier
-                .padding(16.dp)
+        Column(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+
+            ExercisesBody(
+                routineDesc = routineDesc,
+                exerciseList = routineDetailsUiState.exercises,
+                onExerciseClick = navigateToExercise,
+                modifier = Modifier
+                    .padding(16.dp)
             )
+            Button(
+                onClick = { navigateToEditRoutine() },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 80.dp)
+            ) {
+                Icon(Icons.Default.Edit, contentDescription = "Edit")
+            }
+        }
     }
 }
 
 @Composable
 private fun ExercisesBody(
+    routineDesc: String,
     exerciseList: List<Exercise>,
     onExerciseClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
@@ -103,6 +120,7 @@ private fun ExercisesBody(
                 style = MaterialTheme.typography.titleLarge
             )
         } else {
+            Text(text = routineDesc, modifier = Modifier.padding(vertical = 8.dp))
             ExerciseList(
                 exerciseList = exerciseList,
                 onExerciseClick = onExerciseClick,
@@ -160,7 +178,7 @@ private fun ExerciseItem(
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        text = "${exercise.reps} x ${exercise.sets}",
+                        text = "${exercise.sets} Sets x ${exercise.reps}",
                         textAlign = TextAlign.Left,
                         style = MaterialTheme.typography.titleMedium
                     )

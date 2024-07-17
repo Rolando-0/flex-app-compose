@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 @Dao
 interface RoutineDao {
@@ -14,6 +15,9 @@ interface RoutineDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertExercise(exercise: Exercise): Long
     /* Successful insert of an exercise will return its routine's ID*/
+
+    @Query("UPDATE Routine SET name = :newName, `desc` = :newDesc WHERE routineId = :routineId")
+    suspend fun updateRoutine(routineId: Long, newName: String, newDesc: String)
     @Query("SELECT * FROM Routine")
     fun getAllRoutines(): Flow<List<Routine>>
 
@@ -33,4 +37,7 @@ interface RoutineDao {
 
     @Query("DELETE FROM Exercise WHERE exerciseId = :exerciseId")
     suspend fun deleteExerciseById(exerciseId: Long)
+
+    @Query("DELETE FROM Routine WHERE routineId = :routineId")
+    suspend fun deleteRoutineById(routineId: Long)
 }
