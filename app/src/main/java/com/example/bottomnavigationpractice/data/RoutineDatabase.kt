@@ -1,3 +1,15 @@
+/** A class that initializes the RoutineDatabase,
+ * A Database entity implemented with the androidx.room.Room library,
+ * a commonly used library for implementing local databases in
+ * Android and Jetpack Compose. Uses SQLite for implementation.
+ *
+ * Uses the Routine database object, 'routineDao' from RoutineDao.kt
+ * to define the set of SQL queries that can be used
+ * to interact with the 'Routine' and 'Exercise' entities.
+ *
+ * */
+
+
 package com.example.bottomnavigationpractice.data
 
 import android.content.Context

@@ -1,3 +1,7 @@
+/**
+ * The main class which launches the app
+ * */
+
 package com.example.bottomnavigationpractice
 
 import android.os.Bundle

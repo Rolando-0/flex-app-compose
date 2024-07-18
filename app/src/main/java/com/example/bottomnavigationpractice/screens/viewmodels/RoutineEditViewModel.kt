@@ -10,12 +10,32 @@ import com.example.bottomnavigationpractice.data.RoutineRepository
 import com.example.bottomnavigationpractice.navigation.RoutineDetailsRoute
 import com.example.bottomnavigationpractice.navigation.RoutineEditRoute
 
+/**
+ * A viewModel object that contains the state
+ * to be used the Routine Edit Screen in RoutineEditScreen.kt,
+ * allowing user input to update the state of UI components that
+ * display what the user has typed in the fields.
+ *
+ * Receives a savedStateHandle object, which is used to receive arguments
+ * from the screen that navigated to the Routine Edit Screen,
+ * which is most likely the Routine Details Screen in RoutineDetailsScreen.kt, as it contains
+ * the button to edit the specific routine
+ *
+ * Receives a RoutineRepository object from RoutineRepository.kt, used to make database queries
+ *
+ * Initialized by a Factory object in AppViewModelProvider.kt
+ *
+ * */
+
+
+
+
 class RoutineEditViewModel(
     savedStateHandle: SavedStateHandle,
     private val routineRepository: RoutineRepository
 ): ViewModel() {
 
-    private val routineId = savedStateHandle.toRoute<RoutineEditRoute>().routineId
+    private val routineId = savedStateHandle.toRoute<RoutineEditRoute>().routineId //Argument passed to this viewModel (See MainNavGraph.kt)
     var routineEditUiState by mutableStateOf(RoutineEntryUiState())
         private set
 

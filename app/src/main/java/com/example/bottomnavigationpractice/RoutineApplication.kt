@@ -1,3 +1,8 @@
+/**
+ * A kotlin class that initializes the AppContainer,
+ * which contains the database.
+ * */
+
 package com.example.bottomnavigationpractice
 
 import android.app.Application

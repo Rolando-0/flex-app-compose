@@ -1,3 +1,10 @@
+/**
+ * A singleton object which contains a factory
+ * that is used to initialize each viewModel
+ * when needed.
+ * */
+
+
 package com.example.bottomnavigationpractice.data
 
 import androidx.lifecycle.ViewModelProvider

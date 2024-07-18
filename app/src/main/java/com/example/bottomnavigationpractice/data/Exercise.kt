@@ -1,3 +1,14 @@
+/**
+ * A class containing the attributes
+ * for the Exercise entity.
+ *
+ * It has a foreign key to show the
+ * many-to-one relationship it has with Routines,
+ * as each Routine contains many exercises.
+ *
+ **/
+
+
 package com.example.bottomnavigationpractice.data
 
 

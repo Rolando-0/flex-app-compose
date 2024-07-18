@@ -1,3 +1,13 @@
+/**
+ * An interface to be used by the RoutineRepository object in RoutineRepository.kt,
+ * which contains the set of SQL queries used to interact with
+ * the 'Routine' and 'Exercise' entities.
+ *
+ * Queries, notated by @Query include inserting an exercise or
+ * retrieving the list of Routines
+ * */
+
+
 package com.example.bottomnavigationpractice.data
 
 import androidx.room.Dao

@@ -1,3 +1,10 @@
+/**
+ * A kotlin file
+ * containing a component to be used to play videos inside screens.
+ *
+ * */
+
+
 package com.example.bottomnavigationpractice.video
 
 import androidx.compose.foundation.layout.fillMaxSize

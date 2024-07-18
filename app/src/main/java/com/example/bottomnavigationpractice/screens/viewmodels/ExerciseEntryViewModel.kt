@@ -1,3 +1,19 @@
+/**
+ * A viewModel object that contains the state
+ * to be used the Exercise Entry Screen in ExerciseEntryScreen.kt,
+ * allowing user input to update the state of UI components that
+ * display what the user has typed in the fields.
+ *
+ * Receives a savedStateHandle object, which is used to receive arguments
+ * from the screen that navigated to the Exercise Entry Screen,
+ * which is most likely the Routine Details Screen in RoutineDetailsScreen.kt
+ *
+ * Receives a RoutineRepository object from RoutineRepository.kt, used to make database queries
+ *
+ * Initialized by a Factory object in AppViewModelProvider.kt
+ *
+ * */
+
 package com.example.bottomnavigationpractice.screens.viewmodels
 
 import androidx.compose.runtime.getValue
@@ -16,7 +32,7 @@ class ExerciseEntryViewModel(
     private val routineRepository: RoutineRepository,
 ): ViewModel() {
 
-    private val routineId = savedStateHandle.toRoute<ExerciseEntryRoute>().routineId
+    private val routineId = savedStateHandle.toRoute<ExerciseEntryRoute>().routineId // Argument: an routineId, representing which routine this exercise will belong to
 
     var exerciseEntryUiState by mutableStateOf(ExerciseEntryUiState())
         private set

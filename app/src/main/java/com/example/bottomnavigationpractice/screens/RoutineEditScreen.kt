@@ -1,3 +1,17 @@
+
+/**
+ * A Screen in the app itself, which can be arrived at from the Routine screen in
+ * RoutineDetailsScreen.kt
+ *
+ * The screen itself is composed of a form where the user can edit the information of a routine,
+ * meaning its name and description and then save the changes.
+ *
+ * Collects state and makes database queries
+ * from a viewModel object in RoutineEditViewModel.kt
+ *
+ **/
+
+
 package com.example.bottomnavigationpractice.screens
 
 import androidx.compose.foundation.layout.Arrangement

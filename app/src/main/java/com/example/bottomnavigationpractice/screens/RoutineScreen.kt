@@ -1,3 +1,16 @@
+/**
+ * A Screen in the app itself, which can be arrived at by selecting the icon in the Bottom navigation bar
+ * in BottomNavBar.kt. It is the starting destination screen of the app.
+ *
+ * The screen itself is composed of the list of routines,
+ * which can be clicked to navigate to a specific routine itself.
+ * A routine can be added from this screen.
+ *
+ * Collects state and makes database queries
+ * from a viewModel object in RoutinesViewModel.kt
+ *
+ **/
+
 package com.example.bottomnavigationpractice.screens
 
 

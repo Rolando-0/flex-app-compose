@@ -1,3 +1,20 @@
+/**
+ * A viewModel object that contains the state
+ * to be used the Routine Screen in RoutineScreen.kt,
+ * allowing user input to update the state of UI components that
+ * display what the list of routines
+ *
+ * Most likely navigated to by using the bottom navigation bar in BottomNavBar.kt
+ *
+ * Receives a RoutineRepository object from RoutineRepository.kt, used to make database queries
+ *
+ * Initialized by a Factory object in AppViewModelProvider.kt
+ *
+ * */
+
+
+
+
 package com.example.bottomnavigationpractice.screens.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
@@ -11,7 +28,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 /*
 ViewModel for main routine screen
-
  */
 class RoutinesViewModel (
 

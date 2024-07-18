@@ -1,3 +1,9 @@
+/**  A class that implements an AppContainer,
+ *  used instantiating a RoutineRepository object
+ *  to be passed to viewModels
+ *
+ **/
+
 package com.example.bottomnavigationpractice.data
 
 import android.content.Context

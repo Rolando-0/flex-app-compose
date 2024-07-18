@@ -1,3 +1,24 @@
+/**
+ * A kotlin class file containing
+ * WorkOutNavHost,
+ *
+ * critical component of the app which controls the routing
+ * and arguments passed between screens.
+ *
+ * Contains an object for each reachable screen via a route in the app
+ * notated with a @Serializable object or data class, with data classes
+ * having arguments.
+ *
+ * Uses the new type-safe navigation feature in androidx.navigation
+ * version 2.8.0-beta05, to allow for an easier way to pass arguments
+ * and eliminate boiler plate code
+ *
+ *
+
+ *
+ * */
+
+
 package com.example.bottomnavigationpractice.navigation
 
 import androidx.compose.runtime.Composable

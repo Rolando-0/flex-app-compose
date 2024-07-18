@@ -1,3 +1,20 @@
+/**
+ * A viewModel object that contains the state
+ * to be used the Routine Entry Screen in RoutineEntryScreen.kt,
+ * allowing user input to update the state of UI components that
+ * display what the user has typed in the fields.
+ *
+ * Most likely navigated to from the Routine Screen in RoutineScreen.kt, as it contains
+ * the button to add a routine
+ *
+ * Receives a RoutineRepository object from RoutineRepository.kt, used to make database queries
+ *
+ * Initialized by a Factory object in AppViewModelProvider.kt
+ *
+ * */
+
+
+
 package com.example.bottomnavigationpractice.screens.viewmodels
 
 import androidx.compose.runtime.getValue

@@ -1,5 +1,15 @@
-package com.example.bottomnavigationpractice.navigation
+/** A kotline file that contains a
+ * commonly used component in many screens,
+ *
+ * a top app bar 'GoBackTopAppBar' with an icon to navigate back to the previous screen,
+ * with an optional argument, 'allowEdit', a boolean which enables
+ * the icon to edit some kind of data. If enabled, an argument should
+ * be passed to editAction() -> Unit = {} to override the empty action
+ *
+ * */
 
+
+package com.example.bottomnavigationpractice.navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack

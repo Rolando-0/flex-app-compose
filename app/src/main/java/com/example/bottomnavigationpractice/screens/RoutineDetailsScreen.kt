@@ -54,7 +54,7 @@ import coil.request.ImageRequest
  * It will display a list of all the exercises in the routine as well as a video preview
  * of each exercise
  *
- * Collects state and makes database queries
+ * Collects state and makes database queries to load the current routine details (List of displayed exercises)
  * from a viewModel object in RoutineDetailsViewModel.kt
  * */
 

@@ -1,3 +1,19 @@
+/**
+ * A viewModel object that contains the state
+ * to be used in the Routine Details Screen in RoutineDetailsScreen.kt,
+ * allowing user input to update the state of UI components that
+ * display the list of exercises.
+ *
+ * Receives a savedStateHandle object, which is used to receive arguments
+ * from the screen that navigated to the Routine Details Screen,
+ * which is most likely the Routine Screen in RoutineDetailsScreen.kt
+ *
+ * Receives a RoutineRepository object from RoutineRepository.kt, used to make database queries
+ *
+ * Initialized by a Factory object in AppViewModelProvider.kt
+ *
+ * */
+
 package com.example.bottomnavigationpractice.screens.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
@@ -20,7 +36,7 @@ class RoutineDetailsViewModel(
     private val routineRepository: RoutineRepository
 ): ViewModel() {
 
-    private val routineId = savedStateHandle.toRoute<RoutineDetailsRoute>().routineId
+    private val routineId = savedStateHandle.toRoute<RoutineDetailsRoute>().routineId // Argument: a routineId, representing which routine will be queried for its list of exercises
 
     val routineDetailsUiState: StateFlow<RoutineDetailsUiState> =
         routineRepository.getExercisesForRoutine(routineId)

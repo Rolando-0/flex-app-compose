@@ -1,3 +1,14 @@
+
+/**
+ * A class containing the attributes
+ * for the Routine entity.
+ *
+ * The Exercise entity (in Exercise.kt) use the routineId
+ * as a foreign key.
+ **/
+
+
+
 package com.example.bottomnavigationpractice.data
 
 import androidx.room.Entity
