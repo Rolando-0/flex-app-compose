@@ -57,7 +57,13 @@ fun ExerciseScreen(
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
-        topBar = { GoBackTopAppBar(title = "", canNavigateBack = true, navigateUp = navigateBack) }
+        topBar = {
+            GoBackTopAppBar(title = "",
+                canNavigateBack = true,
+                navigateUp = navigateBack,
+
+            )
+        }
     ){innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding)
@@ -130,14 +136,9 @@ fun ExerciseBody(
             Row(
                 modifier = Modifier
                     .padding(vertical = 8.dp)
-                    .fillMaxWidth()
             ){
                 Button(
                     onClick = {editMode = !editMode},
-                    modifier = Modifier
-                        .padding(horizontal = 40.dp)
-                        .weight(1f)
-
                 ) {
                     Icon(Icons.Default.Edit, contentDescription = "Edit")
                 }

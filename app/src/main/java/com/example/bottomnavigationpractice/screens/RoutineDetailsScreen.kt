@@ -62,7 +62,15 @@ fun RoutineDetailsScreen(
     val routineDetailsUiState by viewModel.routineDetailsUiState.collectAsState()
 
     Scaffold(
-        topBar = {GoBackTopAppBar(title = routineName, canNavigateBack = true, navigateUp = navigateBack)},
+        topBar = {
+            GoBackTopAppBar(
+                title = routineName,
+                canNavigateBack = true,
+                navigateUp = navigateBack,
+                allowEdit = true,
+                editAction = navigateToEditRoutine
+            )
+                 },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {navigateToExerciseEntry(routineId)},
@@ -89,14 +97,7 @@ fun RoutineDetailsScreen(
                 modifier = Modifier
                     .padding(16.dp)
             )
-            Button(
-                onClick = { navigateToEditRoutine() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 80.dp)
-            ) {
-                Icon(Icons.Default.Edit, contentDescription = "Edit")
-            }
+
         }
     }
 }

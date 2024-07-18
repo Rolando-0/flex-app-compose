@@ -3,6 +3,7 @@ package com.example.bottomnavigationpractice.navigation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,9 +19,11 @@ import androidx.compose.ui.res.stringResource
 fun GoBackTopAppBar(
     title: String,
     canNavigateBack: Boolean,
+    allowEdit: Boolean = false,
     modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
-    navigateUp: () -> Unit = {}
+    navigateUp: () -> Unit = {},
+    editAction: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         title = { Text(title) },
@@ -33,6 +36,13 @@ fun GoBackTopAppBar(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Go back"
                     )
+                }
+            }
+        },
+        actions = {
+            if(allowEdit) {
+                IconButton(onClick = { editAction() }) {
+                    Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
                 }
             }
         }
