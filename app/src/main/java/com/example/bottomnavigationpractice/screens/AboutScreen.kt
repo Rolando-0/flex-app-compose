@@ -1,3 +1,8 @@
+/**
+ * AboutScreen is a composable function that provides a Scaffold layout with a TopAppBar and
+ * displays information about the application and its developers.
+ */
+
 package com.example.bottomnavigationpractice.screens
 
 import androidx.compose.foundation.layout.*
@@ -38,6 +43,10 @@ fun AboutScreen() {
     }
 }
 
+/**
+ * AboutContent is a composable function that provides the content of the About screen,
+ * including a description of the application and a list of its developers.
+ */
 @Composable
 fun AboutContent(paddingValues: PaddingValues) {
     Column(

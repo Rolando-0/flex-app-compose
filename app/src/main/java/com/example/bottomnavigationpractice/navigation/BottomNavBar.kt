@@ -1,3 +1,8 @@
+/**
+ * BottomNavBar is a composable function that creates a bottom navigation bar with three items:
+ * Workout, Calc, and About. It handles navigation to the respective routes when an item is selected.
+ */
+
 package com.example.bottomnavigationpractice.navigation
 
 import androidx.compose.material.icons.Icons
@@ -19,59 +24,60 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.bottomnavigationpractice.BottomNavigationItem
 
-
 @Composable
 fun BottomNavBar(navController: NavController) {
-    val items = listOf( //Bottom navigation bar items
+    // List of bottom navigation items
+    val items = listOf(
         BottomNavigationItem(
             title = "Workout",
             selectedIcon = Icons.Filled.Check,
             unselectedIcon = Icons.Outlined.Check,
-            hasNews =  false,
+            hasNews = false,
         ),
         BottomNavigationItem(
             title = "Calc",
             selectedIcon = Icons.Filled.Face,
             unselectedIcon = Icons.Outlined.Face,
-            hasNews =  false,
+            hasNews = false,
         ),
         BottomNavigationItem(
             title = "About",
             selectedIcon = Icons.Filled.Info,
             unselectedIcon = Icons.Outlined.Info,
-            hasNews =  false,
+            hasNews = false,
         ),
     )
-    var selectedItemIndex by rememberSaveable{ //Remembers state of selected bottom nav bar item
+
+    // State variable to remember the selected bottom nav bar item
+    var selectedItemIndex by rememberSaveable {
         mutableStateOf(0)
     }
+
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedItemIndex == index,
                 onClick = {
                     selectedItemIndex = index
-                    when(item.title){
+                    // Navigate to the respective route based on the selected item
+                    when(item.title) {
                         "Workout" -> navController.navigate(RoutinesRoute)
                         "Calc" -> navController.navigate(CalcRoute)
                         "About" -> navController.navigate(AboutRoute)
                     }
-
                 },
                 label = {
                     Text(text = item.title)
                 },
                 icon = {
                     Icon(
-                        imageVector = if(index == selectedItemIndex){
+                        imageVector = if (index == selectedItemIndex) {
                             item.selectedIcon
-                        }else item.unselectedIcon,
+                        } else item.unselectedIcon,
                         contentDescription = item.title
                     )
                 }
-
             )
-
         }
     }
 }
