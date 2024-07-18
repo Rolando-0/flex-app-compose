@@ -1,3 +1,16 @@
+/**
+ * A Screen in the app itself, which can be arrived at from the Routine Details screen in
+ * RoutineDetailsScreen.kt
+ *
+ * The screen itself is composed of a form where the user can type in the information of a new
+ * exercise to insert in the currently accessed routine.
+ *
+ * Collects state and makes database queries
+ * from a viewModel object in ExerciseEntryViewModel.kt
+ *
+ **/
+
+
 package com.example.bottomnavigationpractice.screens
 
 import androidx.compose.foundation.layout.Arrangement

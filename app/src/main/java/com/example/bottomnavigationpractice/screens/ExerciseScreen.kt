@@ -1,3 +1,16 @@
+/**
+ * A Screen in the app itself, which can be arrived at from the Routine Details screen in
+ * RoutineDetailsScreen.kt
+ *
+ * While in view mode, the screen will display the exercise and corresponding video
+ * demonstration if there is one. In edit mode, It will display a form to edit the exercise details,
+ * such as the name and youtube url.
+ *
+ * Collects state and initial exercise details, and makes database queries
+ * from a viewModel object in ExerciseViewModel.kt
+ * */
+
+
 package com.example.bottomnavigationpractice.screens
 
 import androidx.compose.foundation.layout.Arrangement

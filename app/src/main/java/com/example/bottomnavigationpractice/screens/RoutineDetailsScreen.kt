@@ -47,6 +47,17 @@ import com.example.bottomnavigationpractice.screens.viewmodels.RoutineDetailsVie
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 
+/**
+ * A Screen in the app itself, which can be arrived at from the Routine Screen in
+ * RoutineScreen.kt
+ *
+ * It will display a list of all the exercises in the routine as well as a video preview
+ * of each exercise
+ *
+ * Collects state and makes database queries
+ * from a viewModel object in RoutineDetailsViewModel.kt
+ * */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RoutineDetailsScreen(
