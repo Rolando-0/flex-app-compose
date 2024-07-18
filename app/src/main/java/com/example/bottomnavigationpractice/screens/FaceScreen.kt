@@ -98,7 +98,7 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (weight.text.isEmpty()) {
-                        Text("Weight (lbs)")
+                        Text("Target Weight (lbs)")
                     }
                     innerTextField()
                 }
