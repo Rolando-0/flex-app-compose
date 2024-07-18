@@ -1,5 +1,8 @@
-
-
+/**
+ * FaceScreen is a composable function that provides a Scaffold layout with a TopAppBar and
+ * dynamically displays content based on the selected item from a dropdown menu. It offers
+ * options for a Calorie Calculator and a One Rep Max Calculator.
+ */
 
 package com.example.bottomnavigationpractice.screens
 
@@ -8,7 +11,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -19,10 +21,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.bottomnavigationpractice.R
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FaceScreen() {
+    // State variables to manage dropdown menu expansion and selected item
     var expanded by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf("Calorie Calculator") }
 
@@ -52,13 +54,13 @@ fun FaceScreen() {
                             expanded = expanded,
                             onDismissRequest = { expanded = false }
                         ) {
-                           DropdownMenuItem(
-                               text = { Text(text = "Calorie Calculator") },
-                               onClick = {selectedItem = "Calorie Calculator"},
-                           )
+                            DropdownMenuItem(
+                                text = { Text(text = "Calorie Calculator") },
+                                onClick = { selectedItem = "Calorie Calculator" },
+                            )
                             DropdownMenuItem(
                                 text = { Text(text = "One Rep Max Calculator") },
-                                onClick = {selectedItem = "One Rep Max Calculator"  },
+                                onClick = { selectedItem = "One Rep Max Calculator" },
                             )
                         }
                     }
@@ -66,6 +68,7 @@ fun FaceScreen() {
             )
         },
     ) { innerPadding ->
+        // Display content based on the selected item
         when (selectedItem) {
             "Calorie Calculator" -> CalcContent(innerPadding)
             "One Rep Max Calculator" -> OneRepMaxCalculatorContent(innerPadding)
@@ -74,8 +77,13 @@ fun FaceScreen() {
     }
 }
 
+/**
+ * OneRepMaxCalculatorContent is a composable function that provides the UI for calculating
+ * the one rep max based on user input of weight and repetitions.
+ */
 @Composable
 fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
+    // State variables to manage user inputs and result
     var weight by remember { mutableStateOf(TextFieldValue()) }
     var reps by remember { mutableStateOf(TextFieldValue()) }
     var result by remember { mutableStateOf("") }
@@ -141,6 +149,7 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
                 val repsValue = reps.text.toIntOrNull()
 
                 if (weightValue != null && repsValue != null) {
+                    // Calculate One Rep Max using the Epley formula
                     val oneRepMax = weightValue * (1 + repsValue / 30f)
                     result = "1 X ${oneRepMax.toInt()} is your One Rep Max"
                 } else {
@@ -157,8 +166,13 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
     }
 }
 
+/**
+ * CalcContent is a composable function that provides the UI for calculating the Basal Metabolic
+ * Rate (BMR) based on user inputs of gender, weight, height, and age.
+ */
 @Composable
 fun CalcContent(innerPadding: PaddingValues) {
+    // State variables to manage user inputs and result
     var gender by remember { mutableStateOf("Male") }
     var weight by remember { mutableStateOf(TextFieldValue()) }
     var height by remember { mutableStateOf(TextFieldValue()) }
@@ -269,6 +283,7 @@ fun CalcContent(innerPadding: PaddingValues) {
                 val ageValue = age.text.toFloatOrNull()
 
                 if (weightValue != null && heightValue != null && ageValue != null) {
+                    // Calculate Basal Metabolic Rate (BMR) based on gender
                     val bmr = if (gender == "Male") {
                         66.5 + (13.75 * weightValue) + (5.003 * heightValue) - (6.75 * ageValue)
                     } else {
