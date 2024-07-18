@@ -55,7 +55,7 @@ fun AboutContent(paddingValues: PaddingValues) {
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        Text("This application is a Flex Workout App that uses Kotlin.", fontSize = 18.sp)
+        Text("This project is called Flex Workout Application. This application’s purpose is to help people organize their workout plan. Having a way to arrange by workout routine. Inside the workout routine, you could have a plethora of workouts. You could also calculate your calories with the basal metabolic rate formula. You can also find your One Rep Max with the calculator. ", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
         Text("The developers for this app are the following:", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
