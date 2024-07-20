@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.example.bottomnavigationpractice.R
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -110,7 +111,7 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (weight.text.isEmpty()) {
-                        Text("Target Weight (lbs)")
+                        Text("Weight (lbs)")
                     }
                     innerTextField()
                 }
@@ -177,7 +178,7 @@ fun CalcContent(innerPadding: PaddingValues) {
     var weight by remember { mutableStateOf(TextFieldValue()) }
     var height by remember { mutableStateOf(TextFieldValue()) }
     var age by remember { mutableStateOf(TextFieldValue()) }
-    var result by remember { mutableStateOf("") }
+    var bmr by remember { mutableStateOf(0.0)}
 
     Column(
         modifier = Modifier
@@ -274,7 +275,7 @@ fun CalcContent(innerPadding: PaddingValues) {
             }
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Button(
             onClick = {
@@ -284,22 +285,46 @@ fun CalcContent(innerPadding: PaddingValues) {
 
                 if (weightValue != null && heightValue != null && ageValue != null) {
                     // Calculate Basal Metabolic Rate (BMR) based on gender
-                    val bmr = if (gender == "Male") {
-                        66.5 + (13.75 * weightValue) + (5.003 * heightValue) - (6.75 * ageValue)
+                    if (gender == "Male") {
+                       bmr = 66.5 + (13.75 * weightValue) + (5.003 * heightValue) - (6.75 * ageValue)
                     } else {
-                        655.1 + (9.563 * weightValue) + (1.850 * heightValue) - (4.676 * ageValue)
+                        bmr = 655.1 + (9.563 * weightValue) + (1.850 * heightValue) - (4.676 * ageValue)
                     }
-                    result = "$bmr This is your Basal Metabolic Rate. This is optimal calorie intake for weight loss."
                 } else {
-                    result = "Please enter valid values for weight, height, and age."
+                    bmr = 0.0
+
                 }
             }
+
         ) {
             Text("Calculate")
         }
 
+        if(bmr != 0.0){
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.padding(vertical = 16.dp)
+            ){
+                Text(
+                    text = "$bmr cal/day is your Basal Metabolic Rate,\n" +
+                            "However, this varies based level of daily\n" +
+                            "activity:",
+                    maxLines = 10
+                )
+                Text(text = "Sedentary: ${TwoDecimalPt(bmr * 1.2)} cal/day")
+                Text(text = "Lightly Active: ${TwoDecimalPt(bmr * 1.375)} cal/day")
+                Text(text = "Moderately Active: ${TwoDecimalPt(bmr * 1.55)} cal/day")
+                Text(text = "Very Active: ${TwoDecimalPt(bmr * 1.725)} cal/day")
+            }
+        } else {
+            Text("Please enter a valid height and weight to calculate your BMR")
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text(result)
+
     }
+}
+fun TwoDecimalPt(value: Double): Double {
+    return (value * 100).toInt() / 100.0
 }
