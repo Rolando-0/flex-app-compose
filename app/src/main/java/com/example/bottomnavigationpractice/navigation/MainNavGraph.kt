@@ -27,10 +27,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import com.example.bottomnavigationpractice.data.ProgressItem
 import com.example.bottomnavigationpractice.screens.FaceScreen
 import com.example.bottomnavigationpractice.screens.AboutScreen
 import com.example.bottomnavigationpractice.screens.ExerciseEntryScreen
 import com.example.bottomnavigationpractice.screens.ExerciseScreen
+import com.example.bottomnavigationpractice.screens.ProgressItemScreen
+import com.example.bottomnavigationpractice.screens.ProgressScreen
 import com.example.bottomnavigationpractice.screens.RoutineDetailsScreen
 import com.example.bottomnavigationpractice.screens.RoutineEditScreen
 import com.example.bottomnavigationpractice.screens.RoutineEntryScreen
@@ -65,8 +68,27 @@ data class ExerciseRoute(
     val routineId: Long
 )
 
+
 @Serializable
-object AboutRoute
+object ProgressRoute
+
+@Serializable
+object AddProgressItemRoute
+@Serializable
+data class ProgressItemRoute(
+    val progressItemId: Long,
+    val itemName: String,
+    val valueType: String
+)
+@Serializable
+data class ProgressItemEditRoute(
+    val progressItemId: Long,
+    val itemName: String,
+)
+@Serializable
+data class AddProgressDataRoute(
+    val progressItemId: Long
+)
 
 @Serializable
 object CalcRoute
@@ -132,8 +154,24 @@ fun WorkOutNavHost(
                 navigateBack = {navController.navigateUp()}
             )
         }
-        composable<AboutRoute>{
-            AboutScreen()
+        composable<ProgressRoute>{
+            ProgressScreen(
+                navigateToProgressItem = {id,name,valueType ->
+                    navController.navigate(ProgressItemRoute(progressItemId = id, itemName = name, valueType = valueType))
+                                         },
+            )
+        }
+
+        composable<ProgressItemRoute> {
+            val args = it.toRoute<ProgressItemRoute>()
+            ProgressItemScreen(
+                navigateBack = {navController.navigateUp()},
+                navigateToEditProgressItem = {navController.navigate(ProgressItemEditRoute(args.progressItemId,args.itemName))},
+                progressItemId = args.progressItemId,
+                progressItemName = args.itemName,
+                progressValueType = args.valueType
+
+            )
         }
         composable<CalcRoute>{
             FaceScreen()

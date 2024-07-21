@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 class RoutineRepository (
     private val routineDao: RoutineDao
 ){
+    /* Routine Queries */
     fun getAllRoutines(): Flow<List<Routine>> =
         routineDao.getAllRoutines()
 
@@ -45,6 +46,8 @@ class RoutineRepository (
     suspend fun deleteExerciseById(exerciseId: Long){
         routineDao.deleteExerciseById(exerciseId)
     }
+
+    /* Progress tracker queries */
 
 
 

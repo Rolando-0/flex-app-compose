@@ -15,6 +15,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.bottomnavigationpractice.RoutineApplication
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseEntryViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseViewModel
+import com.example.bottomnavigationpractice.screens.viewmodels.ProgressViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineDetailsViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineEditViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineEntryViewModel
@@ -54,6 +55,11 @@ object AppViewModelProvider {
             ExerciseViewModel(
                 this.createSavedStateHandle(),
                 routineApplication().container.routineRepository
+            )
+        }
+        initializer{
+            ProgressViewModel(
+                routineApplication().container.progressRepository
             )
         }
 

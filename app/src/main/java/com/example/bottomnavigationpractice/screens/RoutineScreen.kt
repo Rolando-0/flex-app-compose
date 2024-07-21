@@ -119,7 +119,7 @@ private fun RoutinesBody(
     ) {
         if (routineList.isEmpty()) {
             Text(
-                text = "No routines created added yet",
+                text = "No routines created yet",
                 textAlign = TextAlign.Center,
             )
         } else {

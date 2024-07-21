@@ -9,9 +9,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -41,9 +43,9 @@ fun BottomNavBar(navController: NavController) {
             hasNews = false,
         ),
         BottomNavigationItem(
-            title = "About",
-            selectedIcon = Icons.Filled.Info,
-            unselectedIcon = Icons.Outlined.Info,
+            title = "Progress",
+            selectedIcon = Icons.Filled.Star,
+            unselectedIcon = Icons.Outlined.Star,
             hasNews = false,
         ),
     )
@@ -63,7 +65,7 @@ fun BottomNavBar(navController: NavController) {
                     when(item.title) {
                         "Workout" -> navController.navigate(RoutinesRoute)
                         "Calc" -> navController.navigate(CalcRoute)
-                        "About" -> navController.navigate(AboutRoute)
+                        "Progress" -> navController.navigate(ProgressRoute)
                     }
                 },
                 label = {

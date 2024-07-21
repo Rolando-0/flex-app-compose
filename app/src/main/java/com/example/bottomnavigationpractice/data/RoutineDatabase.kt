@@ -19,12 +19,13 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [Routine::class,Exercise::class],
-    version = 6,
+    entities = [Routine::class,Exercise::class,ProgressItem::class,ProgressDataPoint::class],
+    version = 7,
     exportSchema = false
 )
 abstract class RoutineDatabase:RoomDatabase(){
     abstract fun routineDao(): RoutineDao
+    abstract fun progressItemDao(): ProgressItemDao
 
     companion object{
         @Volatile
