@@ -2,6 +2,9 @@
  * A singleton object which contains a factory
  * that is used to initialize each viewModel
  * when needed.
+ *
+ * ViewModels are used by screens to keep track of state inside Ui
+ * and provide an interface for making calls to database
  * */
 
 
@@ -15,6 +18,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.bottomnavigationpractice.RoutineApplication
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseEntryViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseViewModel
+import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineDetailsViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineEditViewModel
@@ -59,6 +63,12 @@ object AppViewModelProvider {
         }
         initializer{
             ProgressViewModel(
+                routineApplication().container.progressRepository
+            )
+        }
+        initializer {
+            ProgressDataViewModel(
+                this.createSavedStateHandle(),
                 routineApplication().container.progressRepository
             )
         }

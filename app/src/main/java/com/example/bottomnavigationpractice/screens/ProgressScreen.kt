@@ -2,10 +2,12 @@ package com.example.bottomnavigationpractice.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bottomnavigationpractice.R
@@ -53,6 +56,7 @@ import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDetails
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressEntryUiState
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressViewModel
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutinesViewModel
+import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
@@ -95,7 +99,7 @@ fun ProgressScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = "Add Routine"
+                    contentDescription = "Add Tracker"
                 )
             }
         }
@@ -214,19 +218,34 @@ private fun ProgressItemCard(
             verticalArrangement =  Arrangement.spacedBy(8.dp)
         ){
             Row(
-
+                modifier = Modifier.fillMaxSize()
             ){
-                Text(
-                    text = progressItem.name,
-                    textAlign = TextAlign.Left,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.weight(4f)
-                )
+                Column(
+                    modifier = Modifier.weight(3f),
+                ){
+                    Text(
+                        text = "${progressItem.name} - ${progressItem.valueType}",
+                        textAlign = TextAlign.Left,
+                        style = MaterialTheme.typography.titleLarge,
+                    )
+
+                }
+                Spacer(modifier = Modifier.weight(1f))
                 if(editMode){
                     Card(
-                        modifier = Modifier.clickable { onDeleteItem(progressItem)  }
+                        modifier = Modifier
+                            .clickable { onDeleteItem(progressItem) }
+                            .weight(1f)
                     ){
-                        Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete")
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.TopEnd
+                        ){
+                            Icon(
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Delete"
+                            )
+                        }
                     }
                 }
 
@@ -238,7 +257,7 @@ private fun ProgressItemCard(
 }
 
 @Composable
-fun AddItemDialog(
+private fun AddItemDialog(
     progressEntryUiState: ProgressEntryUiState,
     onSaveItem: () -> Unit,
     onDismiss: () -> Unit,
@@ -259,13 +278,13 @@ fun AddItemDialog(
                 TextField(
                     value = progressEntryUiState.progressDetails.name,
                     onValueChange = { onValueChange(progressEntryUiState.progressDetails.copy(name = it)) },
-                    label = { Text("Name of Metric") }
+                    label = { Text("Name ie 'Squat Progression'") }
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 TextField(
                     value = progressEntryUiState.progressDetails.valueType,
                     onValueChange = { onValueChange(progressEntryUiState.progressDetails.copy(valueType = it)) },
-                    label = { Text("Value of metric") }
+                    label = { Text("Metric ie (lbs/kg)") }
                 )
             }
         },
@@ -285,4 +304,28 @@ fun AddItemDialog(
             }
         }
     )
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun ProgressItemListPreview(){
+
+    BottomNavigationPracticeTheme {
+        ProgressItemList(
+            progressItemList = listOf(
+            ProgressItem(1,"Deadlift Progression","lbs"),
+            ProgressItem(2,"Squat Progression","lbs"),
+            ProgressItem(3,"Bench Press Progress","lbs")
+            ),
+            editMode = true,
+            modifier = Modifier,
+            onItemClick = {id,name,valuetype ->},
+            onDeleteItem = {},
+            contentPadding = PaddingValues(8.dp)
+
+
+        )
+
+    }
 }

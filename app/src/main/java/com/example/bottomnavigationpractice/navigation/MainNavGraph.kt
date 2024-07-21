@@ -73,22 +73,12 @@ data class ExerciseRoute(
 object ProgressRoute
 
 @Serializable
-object AddProgressItemRoute
-@Serializable
 data class ProgressItemRoute(
     val progressItemId: Long,
     val itemName: String,
     val valueType: String
 )
-@Serializable
-data class ProgressItemEditRoute(
-    val progressItemId: Long,
-    val itemName: String,
-)
-@Serializable
-data class AddProgressDataRoute(
-    val progressItemId: Long
-)
+
 
 @Serializable
 object CalcRoute
@@ -166,7 +156,6 @@ fun WorkOutNavHost(
             val args = it.toRoute<ProgressItemRoute>()
             ProgressItemScreen(
                 navigateBack = {navController.navigateUp()},
-                navigateToEditProgressItem = {navController.navigate(ProgressItemEditRoute(args.progressItemId,args.itemName))},
                 progressItemId = args.progressItemId,
                 progressItemName = args.itemName,
                 progressValueType = args.valueType

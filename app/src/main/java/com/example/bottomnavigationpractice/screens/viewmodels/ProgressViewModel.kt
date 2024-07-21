@@ -18,7 +18,8 @@ class ProgressViewModel(
 ): ViewModel() {
 
     val progressUiState: StateFlow<ProgressUiState> =
-        progressRepository.getAllProgressItems().map { ProgressUiState(it)}
+        progressRepository.getAllProgressItems()
+            .map { ProgressUiState(it)}
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
