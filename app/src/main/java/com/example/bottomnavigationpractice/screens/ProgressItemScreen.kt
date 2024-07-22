@@ -36,6 +36,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color.Companion.Magenta
+import androidx.compose.ui.graphics.Color.Companion.Yellow
+import androidx.compose.ui.graphics.DefaultAlpha
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,12 +54,19 @@ import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataDetai
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataEntryUiState
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataViewModel
 import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
+import com.example.bottomnavigationpractice.ui.theme.primaryLight
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.line.lineChart
+import com.patrykandpatrick.vico.compose.component.shape.shader.fromBrush
+import com.patrykandpatrick.vico.core.axis.AxisItemPlacer
 import com.patrykandpatrick.vico.core.axis.AxisPosition
 import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
+import com.patrykandpatrick.vico.core.chart.layout.HorizontalLayout
+import com.patrykandpatrick.vico.core.chart.line.LineChart
+import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShader
+import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.patrykandpatrick.vico.core.entry.entryOf
@@ -164,24 +176,49 @@ fun ProgressItemBody(
                 val data = dataPoints.associate {
                     LocalDate.parse(it.dateString) to it.value.toFloat()
                 }
-                val xValuesToDates = data.keys.associateBy { it.toEpochDay().toFloat() }
+                val xValuesToDates = data.keys.sortedBy{it.toEpochDay()}.associateBy { it.toEpochDay().toFloat() }
                 val chartEntryModel = entryModelOf(xValuesToDates.keys.zip(data.values, ::entryOf))
                 val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMM")
                 val horizontalAxisValueFormatter = AxisValueFormatter<AxisPosition.Horizontal.Bottom> { value, _ ->
                     (xValuesToDates[value] ?: LocalDate.ofEpochDay(value.toLong())).format(dateTimeFormatter)
                 }
+
+                val lineSpecData = arrayListOf<LineChart.LineSpec>()
+                lineSpecData.add(
+                    LineChart.LineSpec(
+                        lineColor = primaryLight.toArgb(),
+                        lineBackgroundShader = DynamicShaders.fromBrush(
+                            brush = Brush.verticalGradient(
+                                listOf(
+                                    primaryLight.copy(com.patrykandpatrick.vico.core.DefaultAlpha.LINE_BACKGROUND_SHADER_START),
+                                    primaryLight.copy(com.patrykandpatrick.vico.core.DefaultAlpha.LINE_BACKGROUND_SHADER_END)
+                                )
+                            )
+                        ),
+                    )
+                )
+                var xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 1, addExtremeLabelPadding = false)
+                if(dataPoints.size > 2){
+                    xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 5, addExtremeLabelPadding = false)
+                }
+
                 Chart(
-                    chart = lineChart(),
+                    chart = lineChart(
+                        lines = lineSpecData,
+                        spacing = 16.dp
+                    ),
                     model = chartEntryModel,
                     startAxis = rememberStartAxis(),
                     bottomAxis = rememberBottomAxis(
-                        valueFormatter = horizontalAxisValueFormatter
-                    ),
+                        valueFormatter = horizontalAxisValueFormatter,
+                        itemPlacer = xValuePlacer,
+                        tickLength = 0.dp
+                    )
                 )
 
             }
             ProgressDataPointList(
-                dataPoints = dataPoints,
+                dataPoints = dataPoints.sortedBy { LocalDate.parse(it.dateString).toEpochDay()},
                 editMode = editMode,
                 metric = metric,
                 onDeleteDataPoint = onDeleteDataPoint,
@@ -280,7 +317,7 @@ private fun AddDataDialog(
                 TextField(
                     value = progressDataEntryUiState.progressDataDetails.dateString,
                     onValueChange = { onValueChange(progressDataEntryUiState.progressDataDetails.copy(dateString = it)) },
-                    label = { Text("Date") }
+                    label = { Text("Date: yyyy-MM-dd") }
                 )
             }
         },
