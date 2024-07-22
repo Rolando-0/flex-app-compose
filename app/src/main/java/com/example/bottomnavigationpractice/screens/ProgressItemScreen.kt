@@ -49,7 +49,18 @@ import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataDetai
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataEntryUiState
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDataViewModel
 import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
+import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
+import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
+import com.patrykandpatrick.vico.compose.chart.Chart
+import com.patrykandpatrick.vico.compose.chart.line.lineChart
+import com.patrykandpatrick.vico.core.axis.AxisPosition
+import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
+import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
+import com.patrykandpatrick.vico.core.entry.entryModelOf
+import com.patrykandpatrick.vico.core.entry.entryOf
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,8 +75,12 @@ fun ProgressItemScreen(
     var editMode: Boolean by remember { mutableStateOf(false) }
     var addDataDialog by remember { mutableStateOf(false) }
 
-    val progressDetailsUiState by viewModel.progressDetailsUiState.collectAsState()
+    val progressDataUiState by viewModel.progressDataUiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
+    val chartProducer = remember {ChartEntryModelProducer()}
+
+
+
 
     Scaffold(
         topBar = {
@@ -93,14 +108,15 @@ fun ProgressItemScreen(
     ) {innerPadding ->
         ProgressItemBody(
             modifier = Modifier.padding(innerPadding),
-            dataPoints = progressDetailsUiState.progressDataPoints,
+            dataPoints = progressDataUiState.progressDataPoints,
             onDeleteDataPoint = { progressDataPoint: ProgressDataPoint ->
                 coroutineScope.launch{
                     viewModel.deleteDataPoint(progressDataPoint)
                 }
             },
             metric = progressValueType,
-            editMode = editMode
+            editMode = editMode,
+            chartProducer = chartProducer
         )
 
         if (addDataDialog) {
@@ -128,7 +144,8 @@ fun ProgressItemBody(
     dataPoints: List<ProgressDataPoint>,
     onDeleteDataPoint: (ProgressDataPoint) -> Unit,
     metric: String,
-    editMode: Boolean
+    editMode: Boolean,
+    chartProducer: ChartEntryModelProducer
 ){
     Column(
         modifier = modifier
@@ -141,6 +158,28 @@ fun ProgressItemBody(
                 textAlign = TextAlign.Center,
             )
         } else {
+            Column(
+                modifier = Modifier.padding(vertical = 16.dp)
+            ){
+                val data = dataPoints.associate {
+                    LocalDate.parse(it.dateString) to it.value.toFloat()
+                }
+                val xValuesToDates = data.keys.associateBy { it.toEpochDay().toFloat() }
+                val chartEntryModel = entryModelOf(xValuesToDates.keys.zip(data.values, ::entryOf))
+                val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMM")
+                val horizontalAxisValueFormatter = AxisValueFormatter<AxisPosition.Horizontal.Bottom> { value, _ ->
+                    (xValuesToDates[value] ?: LocalDate.ofEpochDay(value.toLong())).format(dateTimeFormatter)
+                }
+                Chart(
+                    chart = lineChart(),
+                    model = chartEntryModel,
+                    startAxis = rememberStartAxis(),
+                    bottomAxis = rememberBottomAxis(
+                        valueFormatter = horizontalAxisValueFormatter
+                    ),
+                )
+
+            }
             ProgressDataPointList(
                 dataPoints = dataPoints,
                 editMode = editMode,

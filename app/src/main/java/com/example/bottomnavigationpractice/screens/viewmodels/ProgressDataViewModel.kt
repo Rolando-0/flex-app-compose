@@ -8,10 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.example.bottomnavigationpractice.data.ProgressDataPoint
-import com.example.bottomnavigationpractice.data.ProgressItem
 import com.example.bottomnavigationpractice.data.ProgressRepository
 import com.example.bottomnavigationpractice.navigation.ProgressItemRoute
-import com.example.bottomnavigationpractice.navigation.RoutineDetailsRoute
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -26,7 +24,7 @@ class ProgressDataViewModel(
 {
     private val progressItemId = savedStateHandle.toRoute<ProgressItemRoute>().progressItemId
 
-    val progressDetailsUiState: StateFlow<ProgressDataUiState> =
+    val progressDataUiState: StateFlow<ProgressDataUiState> =
         progressRepository.getDataPointsByProgressItemId(progressItemId)
             .map{
                 ProgressDataUiState(it)
@@ -36,6 +34,9 @@ class ProgressDataViewModel(
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
                 initialValue = ProgressDataUiState()
             )
+
+
+
     var progressDataEntryUiState by mutableStateOf(ProgressDataEntryUiState())
         private set
 
@@ -49,6 +50,8 @@ class ProgressDataViewModel(
     suspend fun saveProgressDataPoint(){
         if(validateInput()){
             progressRepository.insertDataPoint(progressDataEntryUiState.progressDataDetails.toProgressDataItem(progressItemId))
+
+
         }
     }
 
