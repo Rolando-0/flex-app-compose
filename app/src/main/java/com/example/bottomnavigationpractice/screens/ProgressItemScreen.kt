@@ -65,6 +65,7 @@ import com.patrykandpatrick.vico.core.axis.AxisPosition
 import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
 import com.patrykandpatrick.vico.core.chart.layout.HorizontalLayout
 import com.patrykandpatrick.vico.core.chart.line.LineChart
+import com.patrykandpatrick.vico.core.component.marker.MarkerComponent
 import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShader
 import com.patrykandpatrick.vico.core.component.shape.shader.DynamicShaders
 import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
@@ -199,18 +200,18 @@ fun ProgressItemBody(
                                     primaryLight.copy(com.patrykandpatrick.vico.core.DefaultAlpha.LINE_BACKGROUND_SHADER_END)
                                 )
                             )
-                        ),
+                        )
                     )
                 )
                 var xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 1, addExtremeLabelPadding = true)
                 if(dataPoints.size > 2){
-                    xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 5, addExtremeLabelPadding = true)
+                    xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 10, addExtremeLabelPadding = true)
                 }
 
                 Chart(
                     chart = lineChart(
                         lines = lineSpecData,
-                        spacing = 16.dp
+                        spacing = 8.dp
                     ),
                     model = chartEntryModel,
                     startAxis = rememberStartAxis(),
@@ -218,7 +219,8 @@ fun ProgressItemBody(
                         valueFormatter = horizontalAxisValueFormatter,
                         itemPlacer = xValuePlacer,
                         tickLength = 0.dp
-                    )
+                    ),
+                    horizontalLayout = HorizontalLayout.FullWidth()
                 )
 
             }
