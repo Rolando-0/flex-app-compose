@@ -170,15 +170,20 @@ fun ProgressItemBody(
                 textAlign = TextAlign.Center,
             )
         } else {
+
             Column(
                 modifier = Modifier.padding(vertical = 16.dp)
             ){
-                val data = dataPoints.associate {
+                val data = dataPoints.map {
                     LocalDate.parse(it.dateString) to it.value.toFloat()
-                }
-                val xValuesToDates = data.keys.sortedBy{it.toEpochDay()}.associateBy { it.toEpochDay().toFloat() }
-                val chartEntryModel = entryModelOf(xValuesToDates.keys.zip(data.values, ::entryOf))
+                }.sortedBy { it.first.toEpochDay() }
+
+                val xValuesToDates = data.associate { it.first.toEpochDay().toFloat() to it.first }
+
+                val chartEntryModel = entryModelOf(data.map { entryOf(it.first.toEpochDay().toFloat(), it.second) })
+
                 val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMM")
+
                 val horizontalAxisValueFormatter = AxisValueFormatter<AxisPosition.Horizontal.Bottom> { value, _ ->
                     (xValuesToDates[value] ?: LocalDate.ofEpochDay(value.toLong())).format(dateTimeFormatter)
                 }
@@ -197,9 +202,9 @@ fun ProgressItemBody(
                         ),
                     )
                 )
-                var xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 1, addExtremeLabelPadding = false)
+                var xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 1, addExtremeLabelPadding = true)
                 if(dataPoints.size > 2){
-                    xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 5, addExtremeLabelPadding = false)
+                    xValuePlacer = AxisItemPlacer.Horizontal.default(spacing = 5, addExtremeLabelPadding = true)
                 }
 
                 Chart(
@@ -218,7 +223,7 @@ fun ProgressItemBody(
 
             }
             ProgressDataPointList(
-                dataPoints = dataPoints.sortedBy { LocalDate.parse(it.dateString).toEpochDay()},
+                dataPoints = dataPoints.sortedBy { LocalDate.parse(it.dateString).toEpochDay() },
                 editMode = editMode,
                 metric = metric,
                 onDeleteDataPoint = onDeleteDataPoint,

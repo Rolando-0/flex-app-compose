@@ -1,5 +1,10 @@
 package com.example.bottomnavigationpractice.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,8 +33,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -169,17 +177,30 @@ private fun ExerciseItem(
     onExerciseClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ){
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-            .clickable { onExerciseClick(exercise.exerciseId) },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+
+    val hasAppeared = remember { mutableStateOf(false) }
+
+    // Set the initial state for the animation
+    LaunchedEffect(Unit) {
+        hasAppeared.value = true
+    }
+
+    AnimatedVisibility(
+        visible = hasAppeared.value,
+        enter = fadeIn() + scaleIn(),
+        exit = fadeOut() + scaleOut()
     ) {
+        Card(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .clickable { onExerciseClick(exercise.exerciseId) },
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        ) {
             Row(modifier = modifier.padding(0.dp)) {
                 Card(
                     modifier = modifier.padding(end = 16.dp)
-                ){
+                ) {
                     YoutubeThumbnail(youtubeUrl = exercise.youtubeUrl)
                 }
                 Column(modifier = modifier.padding(8.dp)) {
@@ -197,6 +218,7 @@ private fun ExerciseItem(
                 }
             }
 
+        }
     }
 }
 

@@ -14,6 +14,11 @@
 package com.example.bottomnavigationpractice.screens
 
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -42,6 +47,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.bottomnavigationpractice.R
 import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
@@ -147,11 +155,11 @@ private fun RoutineList(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ){
         items(items = routineList, key = {it.routineId}){ routine ->
-            RoutineItem(
-                routine = routine,
-                onRoutineClick = onRoutineClick
-            )
 
+                RoutineItem(
+                    routine = routine,
+                    onRoutineClick = onRoutineClick
+                )
         }
     }
 }
@@ -160,28 +168,41 @@ private fun RoutineList(
 private fun RoutineItem(
     routine: Routine, modifier: Modifier = Modifier, onRoutineClick: (Long,String,String) -> Unit
 ){
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-            .clickable { onRoutineClick(routine.routineId, routine.name, routine.desc) },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ){
-        Column(
-            modifier = Modifier.padding(20.dp),
-            verticalArrangement =  Arrangement.spacedBy(8.dp)
-        ){
-            Text(
-                text = routine.name,
-                textAlign = TextAlign.Left,
-                style = MaterialTheme.typography.titleLarge
-            )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = routine.desc,
-                textAlign = TextAlign.Left,
-                style = MaterialTheme.typography.titleMedium
-            )
+    val hasAppeared = remember { mutableStateOf(false) }
+
+    // Set the initial state for the animation
+    LaunchedEffect(Unit) {
+        hasAppeared.value = true
+    }
+
+    AnimatedVisibility(
+        visible = hasAppeared.value,
+        enter = fadeIn() + scaleIn(),
+        exit = fadeOut() + scaleOut()
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .clickable { onRoutineClick(routine.routineId, routine.name, routine.desc) },
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = routine.name,
+                    textAlign = TextAlign.Left,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = routine.desc,
+                    textAlign = TextAlign.Left,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
         }
     }
 }

@@ -9,7 +9,9 @@ package com.example.bottomnavigationpractice.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
@@ -27,7 +29,7 @@ import java.util.Locale
 fun FaceScreen() {
     // State variables to manage dropdown menu expansion and selected item
     var expanded by remember { mutableStateOf(false) }
-    var selectedItem by remember { mutableStateOf("Calorie Calculator") }
+    var selectedItem by remember { mutableStateOf("BMR Calculator") }
 
     Scaffold(
         topBar = {
@@ -37,7 +39,7 @@ fun FaceScreen() {
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text("Calorie Calculator")
+                    Text(text = selectedItem)
                 },
                 navigationIcon = {
                     Icon(
@@ -56,8 +58,8 @@ fun FaceScreen() {
                             onDismissRequest = { expanded = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text(text = "Calorie Calculator") },
-                                onClick = { selectedItem = "Calorie Calculator" },
+                                text = { Text(text = "BMR Calculator") },
+                                onClick = { selectedItem = "BMR Calculator" },
                             )
                             DropdownMenuItem(
                                 text = { Text(text = "One Rep Max Calculator") },
@@ -71,7 +73,7 @@ fun FaceScreen() {
     ) { innerPadding ->
         // Display content based on the selected item
         when (selectedItem) {
-            "Calorie Calculator" -> CalcContent(innerPadding)
+            "BMR Calculator" -> BmrContent(innerPadding)
             "One Rep Max Calculator" -> OneRepMaxCalculatorContent(innerPadding)
             else -> {}
         }
@@ -172,13 +174,15 @@ fun OneRepMaxCalculatorContent(innerPadding: PaddingValues) {
  * Rate (BMR) based on user inputs of gender, weight, height, and age.
  */
 @Composable
-fun CalcContent(innerPadding: PaddingValues) {
+fun BmrContent(innerPadding: PaddingValues) {
     // State variables to manage user inputs and result
     var gender by remember { mutableStateOf("Male") }
     var weight by remember { mutableStateOf(TextFieldValue()) }
     var height by remember { mutableStateOf(TextFieldValue()) }
     var age by remember { mutableStateOf(TextFieldValue()) }
     var bmr by remember { mutableStateOf(0.0)}
+
+
 
     Column(
         modifier = Modifier
@@ -301,12 +305,15 @@ fun CalcContent(innerPadding: PaddingValues) {
         }
 
         if(bmr != 0.0){
+            val scrollState = rememberScrollState()
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(vertical = 16.dp)
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .verticalScroll(scrollState)
             ){
                 Text(
-                    text = "$bmr cal/day is your Basal Metabolic Rate,\n" +
+                    text = "${TwoDecimalPt(bmr)} cal/day is your Basal Metabolic Rate,\n" +
                             "However, this varies based level of daily\n" +
                             "activity:",
                     maxLines = 10
