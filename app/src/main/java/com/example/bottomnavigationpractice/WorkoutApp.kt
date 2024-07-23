@@ -1,3 +1,13 @@
+/** A kotlin file containing the main component, called
+ * 'WorkOutApp'
+ *
+ * which wraps the entire front end logic of the app,
+ * such as the routing between screens and bottom navigation bar, used
+ * by the main activity in MainActivity.kt
+ *
+ * */
+
+
 package com.example.bottomnavigationpractice
 
 import androidx.compose.foundation.layout.padding

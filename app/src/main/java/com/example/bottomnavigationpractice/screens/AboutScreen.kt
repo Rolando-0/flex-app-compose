@@ -1,6 +1,10 @@
+/**
+ * AboutScreen is a composable function that provides a Scaffold layout with a TopAppBar and
+ * displays information about the application and its developers.
+ */
+
 package com.example.bottomnavigationpractice.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -39,6 +43,10 @@ fun AboutScreen() {
     }
 }
 
+/**
+ * AboutContent is a composable function that provides the content of the About screen,
+ * including a description of the application and a list of its developers.
+ */
 @Composable
 fun AboutContent(paddingValues: PaddingValues) {
     Column(
@@ -47,7 +55,7 @@ fun AboutContent(paddingValues: PaddingValues) {
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        Text("This application is a Flex Workout App that uses Kotlin.", fontSize = 18.sp)
+        Text("This project is called Flex Workout Application. This application’s purpose is to help people organize their workout plan. Having a way to arrange by workout routine. Inside the workout routine, you could have a plethora of workouts. You could also calculate your calories with the basal metabolic rate formula. You can also find your One Rep Max with the calculator. ", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
         Text("The developers for this app are the following:", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
