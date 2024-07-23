@@ -5,7 +5,7 @@
  *
  * The queries are annotated with @Query, @Insert, @Delete, etc
  *
- * ie fetching all the exercises of a routine
+ * ie fetching all the exercises in a routine
  * */
 
 
