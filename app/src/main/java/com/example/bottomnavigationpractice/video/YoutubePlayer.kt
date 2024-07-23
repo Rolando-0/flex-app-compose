@@ -1,6 +1,6 @@
 /**
- * A kotlin file
- * containing a component to be used to play videos inside screens.
+ * A kotlin file with a composable function that
+ * can be used to play videos inside screens.
  *
  * */
 

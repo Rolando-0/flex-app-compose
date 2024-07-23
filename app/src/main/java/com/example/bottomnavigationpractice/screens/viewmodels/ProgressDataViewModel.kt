@@ -66,9 +66,15 @@ class ProgressDataViewModel(
         }
     }
     private fun isValidDateFormat(date: String): Boolean {
+
+        val regex = Regex("""\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])""")
+        // Check if the date matches has leading zeroes for month and day
+        if(!regex.matches(date)){
+            return false
+        }
+        //Parse for edge cases
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         dateFormat.isLenient = false
-
         return try {
             dateFormat.parse(date)
             true

@@ -182,6 +182,6 @@ fun convertToEmbedUrl(youtubeUrl: String): String {
             val videoId = youtubeUrl.substringAfter("v=").substringBefore("&")
             "https://www.youtube.com/embed/$videoId"
         }
-        else -> throw IllegalArgumentException("Invalid YouTube URL")
+        else -> ""
     }
 }
