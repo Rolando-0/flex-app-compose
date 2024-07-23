@@ -3,8 +3,9 @@
  * which contains the set of SQL queries used to interact with
  * the 'Routine' and 'Exercise' entities.
  *
- * Queries, notated by @Query include inserting an exercise or
- * retrieving the list of Routines
+ * The queries are annotated with @Query, @Insert, @Delete, etc
+ *
+ * ie fetching all the exercises of a routine
  * */
 
 
@@ -24,7 +25,9 @@ interface RoutineDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertExercise(exercise: Exercise): Long
-    /* Successful insert of an exercise will return its routine's ID*/
+
+    @Update
+    suspend fun updateExercise(exercise: Exercise)
 
     @Query("UPDATE Routine SET name = :newName, `desc` = :newDesc WHERE routineId = :routineId")
     suspend fun updateRoutine(routineId: Long, newName: String, newDesc: String)

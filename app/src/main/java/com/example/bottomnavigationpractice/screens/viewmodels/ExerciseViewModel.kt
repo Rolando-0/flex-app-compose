@@ -58,7 +58,16 @@ class ExerciseViewModel (
 
     suspend fun updateExercise(){
         if(validateInput()){
-            routineRepository.insertExercise(exerciseUiState.exerciseDetails.toExercise(routineId),routineId )
+            routineRepository.updateExercise(
+                Exercise(
+                    exerciseId = exerciseId,
+                    name = exerciseUiState.exerciseDetails.name,
+                    reps = exerciseUiState.exerciseDetails.reps,
+                    sets = exerciseUiState.exerciseDetails.sets,
+                    youtubeUrl = exerciseUiState.exerciseDetails.youtubeUrl,
+                    routineId = routineId
+                )
+            )
         }
     }
 

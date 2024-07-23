@@ -2,10 +2,11 @@
  * A kotlin class file containing
  * WorkOutNavHost,
  *
- * critical component of the app which controls the routing
+ * A critical component of the app which controls the routing
  * and arguments passed between screens.
  *
- * Contains an object for each reachable screen via a route in the app
+ *
+ * This file also contains an object for each reachable screen via a route in the app
  * notated with a @Serializable object or data class, with data classes
  * having arguments.
  *
@@ -13,8 +14,7 @@
  * version 2.8.0-beta05, to allow for an easier way to pass arguments
  * and eliminate boiler plate code
  *
- *
-
+ * See comments above the composable WorkOutNavHost in this file to learn more
  *
  * */
 
@@ -84,7 +84,19 @@ data class ProgressItemRoute(
 object CalcRoute
 
 
-
+/**
+ * The 'WorkOutApp' composable in WorkOutApp.kt has the 'NavHostController', an object
+ * responsible for navigating between routes, which themselves display screens.
+ * It passes the NavHostController to a 'WorkOutNavHost' composable
+ * that is defined below.
+ *
+ * Each route, defined in NavHost(navController = navController..){..}
+ * with the following syntax composable<RoutinesRoute>{..},
+ * declares what it wants to display in its body if that route is navigated to.
+ * For example, the RoutinesRoute will display RoutineScreen
+ * and also passes functions that use the navController to allow screens
+ * to navigate to other screens without explicitly passing the navController itself
+ * */
 @Composable
 fun WorkOutNavHost(
     navController: NavHostController,

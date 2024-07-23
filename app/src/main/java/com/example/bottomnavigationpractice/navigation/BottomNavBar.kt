@@ -1,6 +1,15 @@
 /**
  * BottomNavBar is a composable function that creates a bottom navigation bar with three items:
- * Workout, Calc, and About. It handles navigation to the respective routes when an item is selected.
+ * Workout, Calc, and Progress. When each item is clicked, respectively they will navigate to the following:
+ *
+ * 'Workout' -> RoutinesRoute
+ * 'Calc' -> CalcRoute
+ * 'Progress' -> ProgressRoute
+ *
+ * See 'MainNavGraph.kt' to learn more about what these routes do
+ *
+ * when an item is selected
+ * by the user.
  */
 
 package com.example.bottomnavigationpractice.navigation

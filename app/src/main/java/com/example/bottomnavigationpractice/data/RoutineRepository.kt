@@ -28,6 +28,9 @@ class RoutineRepository (
         }
 
     }
+    suspend fun updateExercise(exercise: Exercise){
+        routineDao.updateExercise(exercise)
+    }
     fun getExerciseById(exerciseId: Long): Flow<Exercise> =
         routineDao.getExerciseById(exerciseId)
 
