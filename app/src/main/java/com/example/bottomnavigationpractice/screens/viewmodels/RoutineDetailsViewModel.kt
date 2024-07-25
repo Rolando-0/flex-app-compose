@@ -19,15 +19,12 @@ package com.example.bottomnavigationpractice.screens.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavType
 import androidx.navigation.toRoute
 import com.example.bottomnavigationpractice.data.Exercise
 import com.example.bottomnavigationpractice.data.RoutineRepository
 import com.example.bottomnavigationpractice.navigation.RoutineDetailsRoute
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -35,9 +32,10 @@ class RoutineDetailsViewModel(
     savedStateHandle: SavedStateHandle,
     private val routineRepository: RoutineRepository
 ): ViewModel() {
-
+    /** SavedStateHandle used to grab arguments in the current screen */
     private val routineId = savedStateHandle.toRoute<RoutineDetailsRoute>().routineId // Argument: a routineId, representing which routine will be queried for its list of exercises
 
+    /** state of the list of exercises in routine */
     val routineDetailsUiState: StateFlow<RoutineDetailsUiState> =
         routineRepository.getExercisesForRoutine(routineId)
             .map{

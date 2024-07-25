@@ -27,11 +27,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.example.bottomnavigationpractice.data.ProgressItem
-import com.example.bottomnavigationpractice.screens.FaceScreen
-import com.example.bottomnavigationpractice.screens.AboutScreen
 import com.example.bottomnavigationpractice.screens.ExerciseEntryScreen
 import com.example.bottomnavigationpractice.screens.ExerciseScreen
+import com.example.bottomnavigationpractice.screens.FaceScreen
 import com.example.bottomnavigationpractice.screens.ProgressItemScreen
 import com.example.bottomnavigationpractice.screens.ProgressScreen
 import com.example.bottomnavigationpractice.screens.RoutineDetailsScreen
@@ -39,7 +37,6 @@ import com.example.bottomnavigationpractice.screens.RoutineEditScreen
 import com.example.bottomnavigationpractice.screens.RoutineEntryScreen
 import com.example.bottomnavigationpractice.screens.RoutinesScreen
 import kotlinx.serialization.Serializable
-import java.io.Serial
 
 @Serializable
 object RoutinesRoute

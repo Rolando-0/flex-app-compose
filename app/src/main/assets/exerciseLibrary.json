@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Deadlift",
+    "youtubeUrl": "https://www.youtube.com/watch?v=AweC3UaM14o",
+    "targets": "Back, glutes"
+  },
+  {
+    "name": "Romanian Deadlift",
+    "youtubeUrl": "https://www.youtube.com/watch?v=bT5OOBgY4bc",
+    "targets": "Hamstrings, back"
+  },
+  {
+    "name": "Walking Lunges",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tQNktxPkSeE",
+    "targets": "Hamstrings, back"
+  },
+  {
+    "name": "Bench Press",
+    "youtubeUrl": "https://www.youtube.com/watch?v=ejI1Nlsul9k",
+    "targets": "Chest"
+  },
+  {
+    "name": "Barbell Bent Over Row",
+    "youtubeUrl": "https://www.youtube.com/watch?v=6FZHJGzMFEc",
+    "targets": "Back"
+  },
+  {
+    "name": "Lateral Raises",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OuG1smZTsQQ",
+    "targets": "Side delts"
+  },
+  {
+    "name": "Standing Overhead Press",
+    "youtubeUrl": "https://www.youtube.com/watch?v=G2qpTG1Eh40",
+    "targets": "Shoulders, upper back"
+  },
+  {
+    "name": "Barbell Squat",
+    "youtubeUrl": "https://www.youtube.com/watch?v=j-KDHkRMer0",
+    "targets": "Glutes, Quads"
+  },
+  {
+    "name": "Box Jumps",
+    "youtubeUrl": "https://www.youtube.com/watch?v=W5QzqIbEWvk",
+    "targets": "Quads"
+  },
+  {
+    "name": "Barbell Hip Thrust",
+    "youtubeUrl": "https://www.youtube.com/watch?v=EF7jXP17DPE",
+    "targets": "Glutes"
+  },
+  {
+    "name": "Lat Pulldown",
+    "youtubeUrl": "https://www.youtube.com/watch?v=EUIri47Epcg",
+    "targets": "Back"
+  },
+  {
+    "name": "V-Ups",
+    "youtubeUrl": "https://www.youtube.com/watch?v=BIOM5eSsJ_8",
+    "targets": "Core"
+  }
+]
+

@@ -18,12 +18,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,19 +37,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.example.bottomnavigationpractice.data.AppViewModelProvider
 import com.example.bottomnavigationpractice.data.Exercise
 import com.example.bottomnavigationpractice.navigation.GoBackTopAppBar
 import com.example.bottomnavigationpractice.screens.viewmodels.RoutineDetailsViewModel
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
+import com.example.bottomnavigationpractice.video.YoutubeThumbnail
 
 /**
  * A Screen in the app itself, which can be arrived at from the Routine Screen in
@@ -78,6 +72,17 @@ fun RoutineDetailsScreen(
     navigateToEditRoutine: () -> Unit,
     viewModel: RoutineDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ){
+
+    /**
+     * A Screen in the app itself, which can be arrived at from the Routine Screen in
+     * RoutineScreen.kt
+     *
+     * It will display a list of all the exercises in the routine as well as a video preview
+     * of each exercise
+     *
+     * Collects state and makes database queries to load the current routine details (List of displayed exercises)
+     * from a viewModel object in RoutineDetailsViewModel.kt
+     * */
     val routineDetailsUiState by viewModel.routineDetailsUiState.collectAsState()
 
     Scaffold(
@@ -222,27 +227,3 @@ private fun ExerciseItem(
     }
 }
 
-fun getYoutubeThumbnailUrl(youtubeUrl: String): String {
-    val videoId = when {
-        youtubeUrl.contains("embed/") -> youtubeUrl.substringAfter("embed/").substringBefore("?")
-        youtubeUrl.contains("watch?v=") -> youtubeUrl.substringAfter("v=").substringBefore("&")
-        else -> throw IllegalArgumentException("Invalid YouTube URL")
-    }
-    return "https://img.youtube.com/vi/$videoId/0.jpg"
-}
-
-@Composable
-fun YoutubeThumbnail(youtubeUrl: String, modifier: Modifier = Modifier) {
-    val thumbnailUrl = getYoutubeThumbnailUrl(youtubeUrl)
-    Image(
-        painter = rememberAsyncImagePainter(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(thumbnailUrl)
-                .crossfade(true)
-                .build()
-        ),
-        contentDescription = "YouTube Thumbnail",
-        contentScale = ContentScale.Crop,
-        modifier = modifier.size(100.dp)
-    )
-}

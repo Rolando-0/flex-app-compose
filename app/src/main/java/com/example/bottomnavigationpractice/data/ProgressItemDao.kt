@@ -36,3 +36,4 @@ interface ProgressItemDao {
     fun getDataPointById(id: Long): Flow<ProgressDataPoint?>
 
 }
+

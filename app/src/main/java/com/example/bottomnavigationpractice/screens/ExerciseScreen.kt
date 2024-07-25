@@ -16,9 +16,7 @@ package com.example.bottomnavigationpractice.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -49,12 +47,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bottomnavigationpractice.data.AppViewModelProvider
-import com.example.bottomnavigationpractice.data.Exercise
 import com.example.bottomnavigationpractice.navigation.GoBackTopAppBar
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseDetails
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseUiState
 import com.example.bottomnavigationpractice.screens.viewmodels.ExerciseViewModel
-import com.example.bottomnavigationpractice.screens.viewmodels.RoutineDetailsViewModel
 import com.example.bottomnavigationpractice.video.YoutubePlayer
 import kotlinx.coroutines.launch
 

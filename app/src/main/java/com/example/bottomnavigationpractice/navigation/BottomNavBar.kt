@@ -15,13 +15,11 @@
 package com.example.bottomnavigationpractice.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Face
-import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -41,8 +39,8 @@ fun BottomNavBar(navController: NavController) {
     val items = listOf(
         BottomNavigationItem(
             title = "Workout",
-            selectedIcon = Icons.Filled.Check,
-            unselectedIcon = Icons.Outlined.Check,
+            selectedIcon = Icons.Filled.Home,
+            unselectedIcon = Icons.Outlined.Home,
             hasNews = false,
         ),
         BottomNavigationItem(

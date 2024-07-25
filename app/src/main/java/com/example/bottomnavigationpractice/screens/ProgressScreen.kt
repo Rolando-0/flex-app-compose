@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -27,7 +26,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -42,22 +40,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.bottomnavigationpractice.R
 import com.example.bottomnavigationpractice.data.AppViewModelProvider
-import com.example.bottomnavigationpractice.data.Exercise
 import com.example.bottomnavigationpractice.data.ProgressItem
-import com.example.bottomnavigationpractice.data.Routine
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressDetails
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressEntryUiState
 import com.example.bottomnavigationpractice.screens.viewmodels.ProgressViewModel
-import com.example.bottomnavigationpractice.screens.viewmodels.RoutinesViewModel
 import com.example.bottomnavigationpractice.ui.theme.BottomNavigationPracticeTheme
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 

@@ -1,25 +1,30 @@
 /**
- * A kotlin file with a composable function that
- * can be used to play videos inside screens.
+ * A kotlin file with with composable functions that
+ * can be used to play videos inside screens, or retrieve thumbnails
  *
  * */
 
 
 package com.example.bottomnavigationpractice.video
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -56,7 +61,7 @@ fun YoutubePlayer(youtubeVideoUrl: String, lifecycleOwner: LifecycleOwner, modif
 
 }
 
-fun getYouTubeVideoId(url: String): String? {
+private fun getYouTubeVideoId(url: String): String? {
     val videoIdPattern = listOf(
         "v=([a-zA-Z0-9_-]{11})", // Standard URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)
         "youtu\\.be/([a-zA-Z0-9_-]{11})", // Shortened URL (e.g., https://youtu.be/VIDEO_ID)
@@ -73,4 +78,29 @@ fun getYouTubeVideoId(url: String): String? {
         }
     }
     return null
+}
+
+private fun getYoutubeThumbnailUrl(youtubeUrl: String): String {
+    val videoId = when {
+        youtubeUrl.contains("embed/") -> youtubeUrl.substringAfter("embed/").substringBefore("?")
+        youtubeUrl.contains("watch?v=") -> youtubeUrl.substringAfter("v=").substringBefore("&")
+        else -> throw IllegalArgumentException("Invalid YouTube URL")
+    }
+    return "https://img.youtube.com/vi/$videoId/0.jpg"
+}
+
+@Composable
+fun YoutubeThumbnail(youtubeUrl: String, modifier: Modifier = Modifier) {
+    val thumbnailUrl = getYoutubeThumbnailUrl(youtubeUrl)
+    Image(
+        painter = rememberAsyncImagePainter(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(thumbnailUrl)
+                .crossfade(true)
+                .build()
+        ),
+        contentDescription = "YouTube Thumbnail",
+        contentScale = ContentScale.Crop,
+        modifier = modifier.size(100.dp)
+    )
 }
