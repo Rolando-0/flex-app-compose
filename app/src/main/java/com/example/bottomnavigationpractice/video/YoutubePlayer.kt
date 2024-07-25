@@ -84,7 +84,7 @@ private fun getYoutubeThumbnailUrl(youtubeUrl: String): String {
     val videoId = when {
         youtubeUrl.contains("embed/") -> youtubeUrl.substringAfter("embed/").substringBefore("?")
         youtubeUrl.contains("watch?v=") -> youtubeUrl.substringAfter("v=").substringBefore("&")
-        else -> throw IllegalArgumentException("Invalid YouTube URL")
+        else -> ""
     }
     return "https://img.youtube.com/vi/$videoId/0.jpg"
 }

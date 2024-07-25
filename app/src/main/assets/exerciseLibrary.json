@@ -58,6 +58,76 @@
     "name": "V-Ups",
     "youtubeUrl": "https://www.youtube.com/watch?v=BIOM5eSsJ_8",
     "targets": "Core"
+  },
+  {
+    "name": "Hammer curl",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RIEMoYL_h1Y",
+    "targets": "Biceps"
+  },
+  {
+    "name": "Overhead Triceps Extension",
+    "youtubeUrl": "https://www.youtube.com/watch?v=kqidUIf1eJE",
+    "targets": "Triceps"
+  },
+  {
+    "name": "Good Mornings",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dEJ0FTm-CEk",
+    "targets": "Hamstrings"
+  },
+  {
+    "name": "Bent lateral raise",
+    "youtubeUrl": "https://www.youtube.com/watch?v=34gVHrkaiz0",
+    "targets": "Rear delts"
+  },
+  {
+    "name": "Rope Facepull",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-MODnZdnmAQ",
+    "targets": "Rear delts"
+  },
+  {
+    "name": "Flat Dumbbell Flye",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JFm8KbhjibM",
+    "targets": "Chest"
+  },
+  {
+    "name": "Dumbbell sumo squat",
+    "youtubeUrl": "https://www.youtube.com/watch?v=vBA3vyOxJv0",
+    "targets": "Glutes"
+  },
+  {
+    "name": "Deficit Cossack Lunge",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JFm8KbhjibM",
+    "targets": "Adductors, Quads"
+  },
+  {
+    "name": "Tricep Dips",
+    "youtubeUrl": "https://www.youtube.com/watch?v=4LA1kF7yCGo",
+    "targets": "Triceps, chest"
+  },
+  {
+    "name": "Barbell Skullcrusher",
+    "youtubeUrl": "https://www.youtube.com/watch?v=l3rHYPtMUo8",
+    "targets": "Triceps"
+  },
+  {
+    "name": "Barbell Curl",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JnLFSFurrqQ",
+    "targets": "Biceps"
+  },
+  {
+    "name": "Support Dumbbell Row",
+    "youtubeUrl": "https://www.youtube.com/watch?v=DMo3HJoawrU",
+    "targets": "Lats"
+  },
+  {
+    "name": "Dumbbell Shrug",
+    "youtubeUrl": "https://www.youtube.com/watch?v=_t3lrPI6Ns4",
+    "targets": "Traps"
+  },
+  {
+    "name": "Hanging Knee Rose",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RD_A-Z15ER4",
+    "targets": "Core"
   }
 ]
 
