@@ -190,11 +190,7 @@ private fun ExerciseItem(
         hasAppeared.value = true
     }
 
-    AnimatedVisibility(
-        visible = hasAppeared.value,
-        enter = fadeIn() + scaleIn(),
-        exit = fadeOut() + scaleOut()
-    ) {
+
         Card(
             modifier = modifier
                 .fillMaxWidth()
@@ -224,6 +220,6 @@ private fun ExerciseItem(
             }
 
         }
-    }
+
 }
 
