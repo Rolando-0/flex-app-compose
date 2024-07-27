@@ -2,17 +2,17 @@
   {
     "name": "Deadlift",
     "youtubeUrl": "https://www.youtube.com/watch?v=AweC3UaM14o",
-    "targets": "Back, glutes"
+    "targets": "Back, Glutes"
   },
   {
     "name": "Romanian Deadlift",
     "youtubeUrl": "https://www.youtube.com/watch?v=bT5OOBgY4bc",
-    "targets": "Hamstrings, back"
+    "targets": "Hamstrings, Back"
   },
   {
     "name": "Walking Lunges",
     "youtubeUrl": "https://www.youtube.com/watch?v=tQNktxPkSeE",
-    "targets": "Hamstrings, back"
+    "targets": "Quads, Glutes"
   },
   {
     "name": "Bench Press",
@@ -96,7 +96,7 @@
   },
   {
     "name": "Deficit Cossack Lunge",
-    "youtubeUrl": "https://www.youtube.com/watch?v=JFm8KbhjibM",
+    "youtubeUrl": "https://www.youtube.com/watch?v=ht62BXET_DE",
     "targets": "Adductors, Quads"
   },
   {

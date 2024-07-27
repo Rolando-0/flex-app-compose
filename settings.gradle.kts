@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BottomNavigationPractice"
+rootProject.name = "FlexApp"
 include(":app")
  

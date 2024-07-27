@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bottomnavigationpractice"
+    namespace = "com.example.flexapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bottomnavigationpractice"
+        applicationId = "com.example.flexapp"
         minSdk = 34
         targetSdk = 34
         versionCode = 1
