@@ -4,7 +4,7 @@
  *
  **/
 
-package com.example.flexapp.data
+package com.example.flexapp.database
 
 import android.content.Context
 

@@ -44,13 +44,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
-import com.example.flexapp.data.ProgressDataPoint
+import com.example.flexapp.database.AppViewModelProvider
+import com.example.flexapp.database.entities.ProgressDataPoint
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.ProgressDataDetails
 import com.example.flexapp.screens.viewmodels.ProgressDataEntryUiState
 import com.example.flexapp.screens.viewmodels.ProgressDataViewModel
-import com.example.flexapp.ui.theme.BottomNavigationPracticeTheme
+import com.example.flexapp.ui.theme.FlexAppTheme
 import com.example.flexapp.ui.theme.primaryLight
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -349,7 +349,7 @@ private fun AddDataDialog(
 @Composable
 fun ProgressDataPointListPreview(){
 
-    BottomNavigationPracticeTheme {
+    FlexAppTheme {
         ProgressDataPointList(
             dataPoints = listOf(
                 ProgressDataPoint(1,135,"2022-10-05",0),

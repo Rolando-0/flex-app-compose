@@ -5,7 +5,7 @@
  * */
 
 
-package com.example.flexapp.video
+package com.example.flexapp.screens.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize

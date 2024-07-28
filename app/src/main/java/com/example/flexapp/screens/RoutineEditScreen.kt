@@ -35,7 +35,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
+import com.example.flexapp.database.AppViewModelProvider
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.RoutineDetails
 import com.example.flexapp.screens.viewmodels.RoutineEditViewModel

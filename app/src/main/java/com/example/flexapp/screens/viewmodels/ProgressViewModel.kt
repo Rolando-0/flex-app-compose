@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flexapp.data.ProgressItem
-import com.example.flexapp.data.ProgressRepository
+import com.example.flexapp.database.entities.ProgressItem
+import com.example.flexapp.database.ProgressRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

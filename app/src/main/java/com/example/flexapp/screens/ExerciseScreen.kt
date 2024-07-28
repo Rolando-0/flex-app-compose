@@ -46,12 +46,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
+import com.example.flexapp.database.AppViewModelProvider
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.ExerciseDetails
 import com.example.flexapp.screens.viewmodels.ExerciseUiState
 import com.example.flexapp.screens.viewmodels.ExerciseViewModel
-import com.example.flexapp.video.YoutubePlayer
+import com.example.flexapp.screens.components.YoutubePlayer
 import kotlinx.coroutines.launch
 
 

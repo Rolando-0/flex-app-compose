@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.navigation.toRoute
-import com.example.flexapp.data.RoutineRepository
+import com.example.flexapp.database.RoutineRepository
 import com.example.flexapp.navigation.RoutineEditRoute
 
 /**

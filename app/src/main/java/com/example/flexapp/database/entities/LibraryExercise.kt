@@ -1,4 +1,4 @@
-package com.example.flexapp.data
+package com.example.flexapp.database.entities
 
 import kotlinx.serialization.Serializable
 

@@ -1,5 +1,8 @@
-package com.example.flexapp.data
+package com.example.flexapp.database
 
+import com.example.flexapp.database.entities.Exercise
+import com.example.flexapp.database.entities.Routine
+import com.example.flexapp.database.entities.RoutineDao
 import kotlinx.coroutines.flow.Flow
 
 class RoutineRepository (

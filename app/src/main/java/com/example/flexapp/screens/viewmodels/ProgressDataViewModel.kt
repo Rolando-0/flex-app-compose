@@ -7,8 +7,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.example.flexapp.data.ProgressDataPoint
-import com.example.flexapp.data.ProgressRepository
+import com.example.flexapp.database.entities.ProgressDataPoint
+import com.example.flexapp.database.ProgressRepository
 import com.example.flexapp.navigation.ProgressItemRoute
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

@@ -32,11 +32,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
-import com.example.flexapp.data.Exercise
+import com.example.flexapp.database.AppViewModelProvider
+import com.example.flexapp.database.entities.Exercise
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.RoutineDetailsViewModel
-import com.example.flexapp.video.YoutubeThumbnail
+import com.example.flexapp.screens.components.YoutubeThumbnail
 
 /**
  * A Screen in the app itself, which can be arrived at from the Routine Screen in
@@ -150,7 +150,7 @@ private fun ExerciseList(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 
-){
+    ){
     LazyColumn(
         modifier = modifier,
         contentPadding = contentPadding,

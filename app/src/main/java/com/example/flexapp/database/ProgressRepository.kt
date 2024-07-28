@@ -1,5 +1,8 @@
-package com.example.flexapp.data
+package com.example.flexapp.database
 
+import com.example.flexapp.database.entities.ProgressDataPoint
+import com.example.flexapp.database.entities.ProgressItem
+import com.example.flexapp.database.entities.ProgressItemDao
 import kotlinx.coroutines.flow.Flow
 
 class ProgressRepository(

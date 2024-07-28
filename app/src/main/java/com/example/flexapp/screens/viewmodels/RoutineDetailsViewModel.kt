@@ -20,8 +20,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
-import com.example.flexapp.data.Exercise
-import com.example.flexapp.data.RoutineRepository
+import com.example.flexapp.database.entities.Exercise
+import com.example.flexapp.database.RoutineRepository
 import com.example.flexapp.navigation.RoutineDetailsRoute
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

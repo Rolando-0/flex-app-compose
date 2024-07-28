@@ -56,10 +56,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.flexapp.R
-import com.example.flexapp.data.AppViewModelProvider
-import com.example.flexapp.data.Routine
+import com.example.flexapp.database.AppViewModelProvider
+import com.example.flexapp.database.entities.Routine
 import com.example.flexapp.screens.viewmodels.RoutinesViewModel
-import com.example.flexapp.ui.theme.BottomNavigationPracticeTheme
+import com.example.flexapp.ui.theme.FlexAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -173,7 +173,7 @@ private fun RoutineList(
 
 @Composable
 private fun RoutineItem(
-    routine: Routine, modifier: Modifier = Modifier, onRoutineClick: (Long,String,String) -> Unit
+    routine: Routine, modifier: Modifier = Modifier, onRoutineClick: (Long, String, String) -> Unit
 ){
     val hasAppeared = remember { mutableStateOf(false) }
 
@@ -218,7 +218,7 @@ private fun RoutineItem(
 @Composable
 fun RoutinesBodyPreview(){
 
-    BottomNavigationPracticeTheme {
+    FlexAppTheme {
         RoutinesBody(listOf(
             Routine(1,"Monday","Legs"),
             Routine(2,"Tuesday","Upper Body"),

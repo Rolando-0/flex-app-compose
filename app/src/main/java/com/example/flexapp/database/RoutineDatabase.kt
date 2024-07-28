@@ -10,16 +10,22 @@
  * */
 
 
-package com.example.flexapp.data
+package com.example.flexapp.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.flexapp.database.entities.Exercise
+import com.example.flexapp.database.entities.ProgressDataPoint
+import com.example.flexapp.database.entities.ProgressItem
+import com.example.flexapp.database.entities.ProgressItemDao
+import com.example.flexapp.database.entities.Routine
+import com.example.flexapp.database.entities.RoutineDao
 
 
 @Database(
-    entities = [Routine::class,Exercise::class,ProgressItem::class,ProgressDataPoint::class],
+    entities = [Routine::class, Exercise::class, ProgressItem::class, ProgressDataPoint::class],
     version = 7,
     exportSchema = false
 )

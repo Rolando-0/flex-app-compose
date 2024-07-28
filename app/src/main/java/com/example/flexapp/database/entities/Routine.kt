@@ -9,7 +9,7 @@
 
 
 
-package com.example.flexapp.data
+package com.example.flexapp.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

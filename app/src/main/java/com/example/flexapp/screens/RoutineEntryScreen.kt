@@ -35,12 +35,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
+import com.example.flexapp.database.AppViewModelProvider
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.RoutineDetails
 import com.example.flexapp.screens.viewmodels.RoutineEntryUiState
 import com.example.flexapp.screens.viewmodels.RoutineEntryViewModel
-import com.example.flexapp.ui.theme.BottomNavigationPracticeTheme
+import com.example.flexapp.ui.theme.FlexAppTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -154,7 +154,7 @@ fun RoutineEntryForm(
 @Preview(showBackground = true)
 @Composable
 private fun ItemEntryScreenPreview() {
-    BottomNavigationPracticeTheme {
+    FlexAppTheme {
         RoutineEntryBody(
             routineEntryUiState =
             RoutineEntryUiState(

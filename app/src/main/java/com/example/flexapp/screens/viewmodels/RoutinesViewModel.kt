@@ -19,8 +19,8 @@ package com.example.flexapp.screens.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flexapp.data.Routine
-import com.example.flexapp.data.RoutineRepository
+import com.example.flexapp.database.entities.Routine
+import com.example.flexapp.database.RoutineRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

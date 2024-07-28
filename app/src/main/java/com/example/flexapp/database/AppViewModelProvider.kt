@@ -8,7 +8,7 @@
  * */
 
 
-package com.example.flexapp.data
+package com.example.flexapp.database
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle

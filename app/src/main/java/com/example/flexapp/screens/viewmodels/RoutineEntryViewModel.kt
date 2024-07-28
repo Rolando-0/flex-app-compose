@@ -21,8 +21,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.flexapp.data.Routine
-import com.example.flexapp.data.RoutineRepository
+import com.example.flexapp.database.entities.Routine
+import com.example.flexapp.database.RoutineRepository
 
 class RoutineEntryViewModel (
     private val routineRepository: RoutineRepository

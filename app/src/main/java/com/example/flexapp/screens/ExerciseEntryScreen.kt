@@ -60,13 +60,13 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flexapp.data.AppViewModelProvider
-import com.example.flexapp.data.LibraryExercise
+import com.example.flexapp.database.AppViewModelProvider
+import com.example.flexapp.database.entities.LibraryExercise
 import com.example.flexapp.navigation.GoBackTopAppBar
 import com.example.flexapp.screens.viewmodels.ExerciseDetails
 import com.example.flexapp.screens.viewmodels.ExerciseEntryUiState
 import com.example.flexapp.screens.viewmodels.ExerciseEntryViewModel
-import com.example.flexapp.video.YoutubeThumbnail
+import com.example.flexapp.screens.components.YoutubeThumbnail
 import kotlinx.coroutines.launch
 
 

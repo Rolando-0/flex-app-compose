@@ -47,12 +47,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.flexapp.R
-import com.example.flexapp.data.AppViewModelProvider
-import com.example.flexapp.data.ProgressItem
+import com.example.flexapp.database.AppViewModelProvider
+import com.example.flexapp.database.entities.ProgressItem
 import com.example.flexapp.screens.viewmodels.ProgressDetails
 import com.example.flexapp.screens.viewmodels.ProgressEntryUiState
 import com.example.flexapp.screens.viewmodels.ProgressViewModel
-import com.example.flexapp.ui.theme.BottomNavigationPracticeTheme
+import com.example.flexapp.ui.theme.FlexAppTheme
 import kotlinx.coroutines.launch
 
 
@@ -313,7 +313,7 @@ private fun AddItemDialog(
 @Composable
 fun ProgressItemListPreview(){
 
-    BottomNavigationPracticeTheme {
+    FlexAppTheme {
         ProgressItemList(
             progressItemList = listOf(
             ProgressItem(1,"Deadlift Progression","lbs"),

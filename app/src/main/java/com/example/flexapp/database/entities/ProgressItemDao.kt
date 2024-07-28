@@ -1,4 +1,4 @@
-package com.example.flexapp.data
+package com.example.flexapp.database.entities
 
 import androidx.room.Dao
 import androidx.room.Delete
