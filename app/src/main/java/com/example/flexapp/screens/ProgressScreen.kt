@@ -1,3 +1,15 @@
+/**
+ * A Screen in the app itself, which can be arrived at when the user selects the progress icon in
+ * the bottom navigation bar
+ *
+ * It will display a list of all the progress trackers for each
+ * progress item
+ *
+ * Collects state and makes database queries to load the current Progress items (List of displayed ProgressItems)
+ * from a viewModel object in ProgressViewModel.kt
+ *
+ * */
+
 package com.example.flexapp.screens
 
 import androidx.compose.foundation.clickable

@@ -1,3 +1,17 @@
+/**
+ * An interface to be used by the ProgressRepository object in ProgressRepository.kt,
+ * which contains the set of SQL queries used to interact with
+ * the 'ProgressItem' and 'ProgressDataPoint' entities.
+ *
+ * Also a member of the app's database class in RoutineDatabase.kt
+ *
+ * The queries are annotated with @Query, @Insert, @Delete, etc
+ *
+ * ie fetching all the data points of a progression item
+ * */
+
+
+
 package com.example.flexapp.database.entities
 
 import androidx.room.Dao

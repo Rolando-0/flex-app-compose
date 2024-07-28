@@ -3,6 +3,8 @@
  * which contains the set of SQL queries used to interact with
  * the 'Routine' and 'Exercise' entities.
  *
+ * Also a member of the app's database class in RoutineDatabase.kt
+ *
  * The queries are annotated with @Query, @Insert, @Delete, etc
  *
  * ie fetching all the exercises in a routine

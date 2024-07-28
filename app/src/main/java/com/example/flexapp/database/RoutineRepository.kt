@@ -1,3 +1,15 @@
+/**
+ * Provides an abstraction layer to the database, specifically
+ * the Routine Database Access object in
+ * RoutineDao.kt in the entities package
+ *
+ * Passed down to each ViewModel that modifies data
+ * in the entities 'Routine' and 'Exercise'
+ * by AppViewModelProvider.kt
+ *
+ * Takes an instance of RoutineDao
+ * */
+
 package com.example.flexapp.database
 
 import com.example.flexapp.database.entities.Exercise
@@ -53,7 +65,7 @@ class RoutineRepository (
         routineDao.deleteExerciseById(exerciseId)
     }
 
-    /* Progress tracker queries */
+
 
 
 

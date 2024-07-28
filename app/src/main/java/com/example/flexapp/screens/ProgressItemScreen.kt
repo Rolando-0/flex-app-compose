@@ -1,3 +1,17 @@
+/**
+ * A Screen in the app itself, which can be arrived at when the user clicks an existing
+ * progression item tracker they made in ProgressScreen.kt
+ *
+ * It will display a list of all the data points in the current progression tracker, and a chart
+ * to visualize the data.
+ *
+ * Collects state and makes database queries to load the current ProgressItem data points (List of displayed ProgressDataPoints)
+ * from a viewModel object in ProgressDataViewModel.kt
+ *
+ * Current state of the data points automatically updates the chart composable
+ * */
+
+
 package com.example.flexapp.screens
 
 import android.graphics.Color

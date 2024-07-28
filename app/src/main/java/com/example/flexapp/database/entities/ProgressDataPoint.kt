@@ -1,3 +1,15 @@
+/**
+ * A class containing the attributes
+ * for the ProgressDataPoint entity.
+ *
+ * It has a foreign key to show the
+ * many-to-one relationship it has with ProgressItem,
+ * as each ProgressItem can have many data points
+ * recorded.
+ *
+ **/
+
+
 package com.example.flexapp.database.entities
 
 import androidx.room.Entity

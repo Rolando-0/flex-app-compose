@@ -1,3 +1,15 @@
+/**
+ * Provides an abstraction layer to the database, specifically
+ * the Progress Database Access object in
+ * ProgressDao.kt in the entities package
+ *
+ * Passed down to each ViewModel that modifies data
+ * in the entities 'ProgressItem' and 'ProgressDataPoint'
+ * by AppViewModelProvider.kt
+ *
+ * Takes an instance of ProgressDao
+ * */
+
 package com.example.flexapp.database
 
 import com.example.flexapp.database.entities.ProgressDataPoint

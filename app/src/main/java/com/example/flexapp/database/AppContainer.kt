@@ -1,7 +1,9 @@
 /**  A class that implements an AppContainer,
  *  used instantiating a RoutineRepository object
- *  to be passed to viewModels
+ *  and ProgressRepository object
  *
+ *  and wraps both the RoutineRepository and
+ *  ProgressRepository into members of a single container
  **/
 
 package com.example.flexapp.database
