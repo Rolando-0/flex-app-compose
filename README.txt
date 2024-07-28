@@ -93,11 +93,19 @@ Project Structure (within com.example.flexapp)
   ui.theme package:
 
     Contains files that describe the primary and secondary colors, fonts and themes for the app.
-  
-  
-    
-  
 
+
+
+Outside of the main package (com.example.flexapp), the following packages do the following:
+
+assets - should be used to place any auxiliary assets used by the app, such as the JSON file
+for the exercise library
+
+res - contains the main resources used by the app, such as the launcher icon and other images,
+string values and other values
+
+Gradle Scripts - defines the dependencies and their versions, plugins, project settings, and
+other gradle properties
 
   
     
