@@ -2,6 +2,8 @@ READ ME
 
 Project Structure (within com.example.flexapp)
 
+  MainActivity.kt - the main class which launches the app
+
   database package:
   
     
